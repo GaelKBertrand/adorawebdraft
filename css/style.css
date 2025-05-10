@@ -2019,3 +2019,18 @@ footer .form-subscribe .form-control:active, footer .form-subscribe .form-contro
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+.booking-button {
+  color: #ffffff;
+  background-color: #5f22ec;
+  font-size: 19px;
+  border: 1px solid #2d63c8;
+  padding: 10px 22px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer
+}
+.booking-button:hover {
+  color: #2d63c8;
+  background-color: #ffffff;
+}
