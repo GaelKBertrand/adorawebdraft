@@ -24,7 +24,7 @@
     "maxChildren": 2,
     "bhk": null,
     "description": "Juniper House offers a range of cozy to spacious units, ideal for a tranquil getaway amidst valley and mountain landscapes.",
-    "image": "https://placehold.co/600x400/E0E0E0/000000?text=Juniper+House+Main",
+    "image": "assets/img/hotel/junipercover.jpg",
     "badge": "Tranquil Retreat",
     "view": "valley",
     "features": ["wifi", "kitchen"]
@@ -39,7 +39,7 @@
     "maxChildren": 1,
     "bhk": null,
     "description": "A collection of art-inspired homes, offering comfortable and budget-friendly units, perfect for solo travelers or couples exploring the city.",
-    "image": "https://placehold.co/600x400/E0E0E0/000000?text=Starway+Homes+Main",
+    "image": "assets/img/hotel/starwaycover.jpg",
     "badge": "Artistic Stay",
     "view": "city",
     "features": ["wifi"]
@@ -53,8 +53,8 @@
     "maxAdults": 4,
     "maxChildren": 2,
     "bhk": null,
-    "description": "Ashiana Hotel provides a variety of spacious accommodations with stunning farm and mountain views, catering to families and larger groups.",
-    "image": "https://placehold.co/600x400/E0E0E0/000000?text=Ashiana+Hotel+Main",
+    "description": "Amaira Hotel provides a variety of spacious accommodations with stunning farm and mountain views, catering to families and larger groups.",
+    "image": "assets/img/hotel/amairacover.jpg",
     "badge": "Farmhouse Experience",
     "view": "mountain",
     "features": ["wifi", "kitchen", "balcony"]
