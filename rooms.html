@@ -132,7 +132,6 @@
     <!-- Weather Forecast -->
     <div id="ww_153b40165b7d8" v='1.3' loc='id' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":["wl389"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#303F9F","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","cl_odd":"#0000000a"}'><a href="https://weatherwidget.org/" id="ww_153b40165b7d8_u" target="_blank">weatherwidget.org</a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_153b40165b7d8"></script>
 
-
     <!-- Rooms 2 Section -->
     <section id="rooms-2" class="rooms-2 section">
 
@@ -402,6 +401,110 @@
 
     </section><!-- /Rooms 2 Section -->
 
+    <!-- Rooms 2 Section -->
+  <section id="rooms-2" class="rooms-2 section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-4">
+          <div class="room-filters" data-aos="fade-right" data-aos-delay="100">
+            <h5>Filter Rooms</h5>
+
+            <div class="filter-group">
+              <label>Price Range</label>
+              <select class="form-select" id="price-filter">
+                <option value="">All Prices</option>
+                <option value="upto-5000">Up to ₹5000</option>
+                <option value="5000-15000">₹5000 - ₹15000</option>
+                <option value="15000-plus">₹15000+</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Room Capacity</label>
+              <select class="form-select" id="capacity-filter">
+                <option value="">Any Capacity</option>
+                <option value="1-4">1-4 Guests</option>
+                <option value="5-10">5-10 Guests</option>
+                <option value="10-plus">10+ Guests</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>View Type</label>
+              <select class="form-select" id="view-filter">
+                <option value="">All Views</option>
+                <option value="mountain">Mountain View</option>
+                <option value="valley">Valley View</option>
+                <option value="city">City View</option>
+                <option value="garden">Garden View</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Room Features</label>
+              <div class="feature-checkboxes">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="wifi">
+                  <label class="form-check-label" for="wifi">Free Wi-Fi</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="balcony">
+                  <label class="form-check-label" for="balcony">Private Balcony</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="kitchen">
+                  <label class="form-check-label" for="kitchen">Kitchenette</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="spa">
+                  <label class="form-check-label" for="spa">Spa Access</label>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary w-100" id="apply-filters-btn">Apply Filters</button>
+          </div>
+        </div>
+
+        <div class="col-lg-9 col-md-8">
+          <div class="rooms-header d-flex justify-content-between align-items-center mb-4" data-aos="fade-left" data-aos-delay="150">
+            <div class="results-count">
+              <span>Showing <span id="room-count">0</span> Stays</span>
+            </div>
+            <div class="sort-options">
+              <select class="form-select" id="sort-by-select">
+                <option value="featured">Sort by: Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <!-- Removed 'rating' as it's not in our data -->
+              </select>
+            </div>
+          </div>
+
+          <div class="row gy-4" id="room-listings-container">
+            <!-- Room cards will be dynamically loaded here -->
+            <div class="loading-indicator">Loading rooms...</div>
+          </div>
+
+          <div class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="500">
+            <nav aria-label="Room listings pagination">
+              <ul class="pagination justify-content-center" id="pagination-controls">
+                <!-- Pagination will be dynamically loaded here -->
+              </ul>
+            </nav>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Rooms 2 Section -->
+
   </main>
 
   <footer id="footer" class="footer position-relative dark-background">
@@ -511,6 +614,305 @@
   <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Library JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      let allRoomsData = []; // This will hold your room data after it's fetched
+      let currentFilteredRooms = []; // Rooms currently matching filters
+      let currentPage = 1;
+      const roomsPerPage = 6; // Number of rooms to display per page
+
+      // DOM Elements
+      const roomContainer = document.getElementById('room-listings-container');
+      const roomCountSpan = document.getElementById('room-count');
+      const priceFilter = document.getElementById('price-filter');
+      const capacityFilter = document.getElementById('capacity-filter');
+      const viewFilter = document.getElementById('view-filter');
+      const featureCheckboxes = document.querySelectorAll('.feature-checkboxes input[type="checkbox"]');
+      const sortBySelect = document.getElementById('sort-by-select');
+      const applyFiltersButton = document.getElementById('apply-filters-btn');
+      const paginationControls = document.getElementById('pagination-controls');
+      const loadingIndicator = document.querySelector('.loading-indicator');
+
+      // --- Helper Functions ---
+
+      /**
+       * Generates the HTML for a single room card.
+       * @param {object} room - The room data object.
+       * @returns {string} The HTML string for the room card.
+       */
+      function createRoomCardHTML(room) {
+        let badgeHTML = '';
+        if (room.badge) {
+          // Use specific classes for badge styling if they exist
+          const badgeClass = room.badge.toLowerCase().replace(' ', '-');
+          badgeHTML = `<div class="room-badge ${badgeClass}">${room.badge}</div>`;
+        }
+
+        // Map internal feature names to display names and icons
+        const roomFeaturesHTML = room.features.map(feature => {
+          let iconClass = '';
+          let displayText = '';
+          switch(feature) {
+            case 'wifi': iconClass = 'bi bi-wifi'; displayText = 'Free Wi-Fi'; break;
+            case 'balcony': iconClass = 'bi bi-card-image'; displayText = 'Private Balcony'; break;
+            case 'kitchen': iconClass = 'bi bi-house'; displayText = 'Kitchenette'; break;
+            case 'spa': iconClass = 'bi bi-heart'; displayText = 'Spa Access'; break;
+            // Add more cases for other features if needed
+            default: iconClass = 'bi bi-question-circle'; displayText = feature; // Fallback
+          }
+          return `<span><i class="${iconClass}"></i> ${displayText}</span>`;
+        }).join('');
+
+        // Determine capacity display
+        let capacityIcon = 'bi bi-people'; // Default icon for multiple guests
+        let capacityText = `${room.maxOccupancy} Guests`;
+        if (room.maxOccupancy === 1) {
+            capacityIcon = 'bi bi-person';
+            capacityText = '1 Guest';
+        } else if (room.maxOccupancy > 1) {
+            capacityText = `${room.maxOccupancy} Guests`;
+        }
+        const capacityHTML = `<span><i class="${capacityIcon}"></i> ${capacityText}</span>`;
+
+        return `
+          <div class="col-lg-6" data-room-id="${room.id}" data-aos="fade-up">
+            <div class="room-card">
+              <div class="room-image">
+                <img src="${room.image}" alt="${room.name}" class="img-fluid" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/000000?text=Image+Not+Found';">
+                ${badgeHTML}
+                <div class="room-price">
+                  <span class="price">₹${room.price.toLocaleString('en-IN')}</span>
+                  <span class="period">/ night</span>
+                </div>
+              </div>
+              <div class="room-content">
+                <h4>${room.name}</h4>
+                <p>${room.description}</p>
+                <div class="room-features">
+                  ${capacityHTML}
+                  ${roomFeaturesHTML}
+                </div>
+                <div class="room-actions">
+                  <a href="room-details.html?id=${room.id}" class="btn btn-primary">View Details</a>
+                  <a href="booking.html?id=${room.id}" class="btn btn-outline-primary">Check Availability</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      /**
+       * Renders the rooms for the current page.
+       * @param {Array} roomsToDisplay - The array of room objects to render.
+       */
+      function renderRooms(roomsToDisplay) {
+        roomContainer.innerHTML = ''; // Clear existing rooms
+        roomCountSpan.textContent = roomsToDisplay.length;
+
+        if (roomsToDisplay.length === 0) {
+          roomContainer.innerHTML = '<p class="text-center w-100 mt-5">No rooms found matching your criteria.</p>';
+          paginationControls.innerHTML = ''; // Clear pagination if no rooms
+          return;
+        }
+
+        // Calculate rooms for the current page
+        const startIndex = (currentPage - 1) * roomsPerPage;
+        const endIndex = startIndex + roomsPerPage;
+        const roomsForPage = roomsToDisplay.slice(startIndex, endIndex);
+
+        roomsForPage.forEach(room => {
+          roomContainer.insertAdjacentHTML('beforeend', createRoomCardHTML(room));
+        });
+
+        AOS.refresh(); // Refresh AOS to apply animations to new elements
+        renderPagination(roomsToDisplay.length);
+      }
+
+      /**
+       * Renders the pagination controls.
+       * @param {number} totalRooms - Total number of filtered rooms.
+       */
+      function renderPagination(totalRooms) {
+        paginationControls.innerHTML = '';
+        const totalPages = Math.ceil(totalRooms / roomsPerPage);
+
+        // Previous button
+        const prevDisabled = currentPage === 1 ? 'disabled' : '';
+        paginationControls.insertAdjacentHTML('beforeend', `
+          <li class="page-item ${prevDisabled}">
+            <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+          </li>
+        `);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const activeClass = i === currentPage ? 'active' : '';
+          paginationControls.insertAdjacentHTML('beforeend', `
+            <li class="page-item ${activeClass}">
+              <a class="page-link" href="#" data-page="${i}">${i}</a>
+            </li>
+          `);
+        }
+
+        // Next button
+        const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+        paginationControls.insertAdjacentHTML('beforeend', `
+          <li class="page-item ${nextDisabled}">
+            <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+          </li>
+        `);
+
+        // Add event listeners to new pagination links
+        paginationControls.querySelectorAll('.page-link').forEach(link => {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const newPage = parseInt(event.target.dataset.page);
+            if (!isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
+              currentPage = newPage;
+              renderRooms(currentFilteredRooms); // Re-render with updated page
+            }
+          });
+        });
+      }
+
+      /**
+       * Gets the current filter values from the UI.
+       * @returns {object} An object containing the current filter selections.
+       */
+      function getFilterValues() {
+        const selectedFeatures = Array.from(featureCheckboxes)
+          .filter(checkbox => checkbox.checked)
+          .map(checkbox => checkbox.id); // Use the ID as the feature identifier
+
+        return {
+          price: priceFilter.value,
+          capacity: capacityFilter.value,
+          view: viewFilter.value,
+          features: selectedFeatures,
+          sortBy: sortBySelect.value
+        };
+      }
+
+      /**
+       * Applies filters and sorting to the allRoomsData and updates the UI.
+       */
+      function applyFiltersAndSort() {
+        const filters = getFilterValues();
+        let filtered = [...allRoomsData]; // Start with a fresh copy of all rooms
+
+        // --- Filtering Logic ---
+
+        // Price Filter
+        if (filters.price) {
+          filtered = filtered.filter(room => {
+            const price = room.price;
+            if (filters.price === 'upto-5000') return price <= 5000;
+            if (filters.price === '5000-15000') return price > 5000 && price <= 15000;
+            if (filters.price === '15000-plus') return price > 15000;
+            return true; // Should not happen if options are well-defined
+          });
+        }
+
+        // Room Capacity Filter (based on maxOccupancy)
+        if (filters.capacity) {
+          filtered = filtered.filter(room => {
+            const maxOccupancy = room.maxOccupancy;
+            if (filters.capacity === '1-4') return maxOccupancy >= 1 && maxOccupancy <= 4;
+            if (filters.capacity === '5-10') return maxOccupancy >= 5 && maxOccupancy <= 10;
+            if (filters.capacity === '10-plus') return maxOccupancy > 10;
+            return true;
+          });
+        }
+
+        // View Type Filter
+        if (filters.view) {
+          filtered = filtered.filter(room => room.view === filters.view);
+        }
+
+        // Room Features Filter (all selected features must be present in the room's features array)
+        if (filters.features.length > 0) {
+          filtered = filtered.filter(room => {
+            return filters.features.every(feature => room.features.includes(feature));
+          });
+        }
+
+        // --- Sorting Logic ---
+        if (filters.sortBy) {
+          filtered.sort((a, b) => {
+            if (filters.sortBy === 'price-low') {
+              return a.price - b.price;
+            } else if (filters.sortBy === 'price-high') {
+              return b.price - a.price;
+            } else if (filters.sortBy === 'featured') {
+              // Bring rooms with a badge to the top, then by price (desc)
+              const aHasBadge = a.badge ? 1 : 0;
+              const bHasBadge = b.badge ? 1 : 0;
+              if (aHasBadge !== bHasBadge) {
+                return bHasBadge - aHasBadge; // Rooms with badges come first
+              }
+              return b.price - a.price; // Then sort by price high to low for "featured"
+            }
+            return 0; // No specific sort or default
+          });
+        }
+
+        currentFilteredRooms = filtered; // Update the global filtered list
+        currentPage = 1; // Reset to first page on new filter/sort
+        renderRooms(currentFilteredRooms); // Render the new filtered/sorted list
+      }
+
+      // --- Event Listeners ---
+
+      // Listen for click on the "Apply Filters" button
+      applyFiltersButton.addEventListener('click', applyFiltersAndSort);
+
+      // Listen for changes on filter select boxes for immediate filtering
+      priceFilter.addEventListener('change', applyFiltersAndSort);
+      capacityFilter.addEventListener('change', applyFiltersAndSort);
+      viewFilter.addEventListener('change', applyFiltersAndSort);
+
+      // Listen for changes on feature checkboxes for immediate filtering
+      featureCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', applyFiltersAndSort);
+      });
+
+      // Listen for changes on the sort by select box
+      sortBySelect.addEventListener('change', applyFiltersAndSort);
+
+      // --- Initial Data Fetch and Render ---
+      // Show loading indicator while fetching
+      loadingIndicator.style.display = 'block';
+      roomContainer.innerHTML = ''; // Clear any static content
+
+      fetch('rooms.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json(); // Parse the JSON data
+        })
+        .then(data => {
+          allRoomsData = data; // Store the fetched data
+          loadingIndicator.style.display = 'none'; // Hide loading indicator
+          applyFiltersAndSort(); // Apply initial filters and render all rooms
+        })
+        .catch(error => {
+          console.error('There was a problem fetching the room data:', error);
+          loadingIndicator.style.display = 'none'; // Hide loading indicator
+          roomContainer.innerHTML = '<p class="text-center w-100 mt-5 text-danger">Failed to load room data. Please ensure rooms.json is in the same directory and a local server is running.</p>';
+          roomCountSpan.textContent = '0';
+        });
+    });
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
