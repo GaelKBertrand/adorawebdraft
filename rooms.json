@@ -8,8 +8,8 @@
     "maxAdults": 12,
     "maxChildren": 4,
     "bhk": null,
-    "description": "A collection of luxurious cottages offering various configurations, perfect for families and groups seeking comfort and scenic mountain views.",
-    "image": "https://placehold.co/600x400/E0E0E0/000000?text=Swiss+Cottage+Main",
+    "description": "Experience luxury and comfort in our spacious 5-bedroom Swiss Cottage, perfect for large families or groups looking for a retreat in the heart of nature.",
+    "image": "assets/img/hotel/swisscover.jpg",
     "badge": "Luxury Collection",
     "view": "mountain",
     "features": ["wifi", "balcony", "kitchen", "spa"]
