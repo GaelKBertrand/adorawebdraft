@@ -132,111 +132,113 @@
     <!-- Weather Forecast -->
     <div id="ww_153b40165b7d8" v='1.3' loc='id' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":["wl389"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#303F9F","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","cl_odd":"#0000000a"}'><a href="https://weatherwidget.org/" id="ww_153b40165b7d8_u" target="_blank">weatherwidget.org</a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_153b40165b7d8"></script>
 
+
     <!-- Rooms 2 Section -->
   <section id="rooms-2" class="rooms-2 section">
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="row">
+    <div class="row">
 
-        <!--Filters -->
-        <div class="col-lg-3 col-md-4">
-          <div class="room-filters" data-aos="fade-right" data-aos-delay="100">
-            <h5>Filter Rooms</h5>
+      <!--Filters -->
+      <div class="col-lg-3 col-md-4">
+        <div class="room-filters" data-aos="fade-right" data-aos-delay="100">
+          <h5>Filter Rooms</h5>
 
-            <div class="filter-group">
-              <label>Price Range</label>
-              <select class="form-select" id="price-filter">
-                <option value="">All Prices</option>
-                <option value="upto-5000">Up to ₹5000</option>
-                <option value="5000-15000">₹5000 - ₹15000</option>
-                <option value="15000-plus">₹15000+</option>
-              </select>
-            </div>
+          <div class="filter-group">
+            <label>Price Range</label>
+            <select class="form-select" id="price-filter">
+              <option value="">All Prices</option>
+              <option value="upto-5000">Up to ₹5000</option>
+              <option value="5000-15000">₹5000 - ₹15000</option>
+              <option value="15000-plus">₹15000+</option>
+            </select>
+          </div>
 
-            <div class="filter-group">
-              <label>Room Capacity</label>
-              <select class="form-select" id="capacity-filter">
-                <option value="">Any Capacity</option>
-                <option value="1-4">1-4 Guests</option>
-                <option value="5-10">5-10 Guests</option>
-                <option value="10-plus">10+ Guests</option>
-              </select>
-            </div>
+          <div class="filter-group">
+            <label>Room Capacity</label>
+            <select class="form-select" id="capacity-filter">
+              <option value="">Any Capacity</option>
+              <option value="1-4">1-4 Guests</option>
+              <option value="5-10">5-10 Guests</option>
+              <option value="10-plus">10+ Guests</option>
+            </select>
+          </div>
 
-            <div class="filter-group">
-              <label>View Type</label>
-              <select class="form-select" id="view-filter">
-                <option value="">All Views</option>
-                <option value="mountain">Mountain View</option>
-                <option value="valley">Valley View</option>
-                <option value="city">City View</option>
-                <option value="garden">Garden View</option>
-              </select>
-            </div>
+          <div class="filter-group">
+            <label>View Type</label>
+            <select class="form-select" id="view-filter">
+              <option value="">All Views</option>
+              <option value="mountain">Mountain View</option>
+              <option value="valley">Valley View</option>
+              <option value="city">City View</option>
+              <option value="garden">Garden View</option>
+            </select>
+          </div>
 
-            <div class="filter-group">
-              <label>Room Features</label>
-              <div class="feature-checkboxes">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="wifi">
-                  <label class="form-check-label" for="wifi">Free Wi-Fi</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="balcony">
-                  <label class="form-check-label" for="balcony">Private Balcony</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="kitchen">
-                  <label class="form-check-label" for="kitchen">Kitchen</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="spa">
-                  <label class="form-check-label" for="spa">Boiler Balcony Access</label>
-                </div>
+          <div class="filter-group">
+            <label>Room Features</label>
+            <div class="feature-checkboxes">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="wifi">
+                <label class="form-check-label" for="wifi">Free Wi-Fi</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="balcony">
+                <label class="form-check-label" for="balcony">Private Balcony</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="kitchen">
+                <label class="form-check-label" for="kitchen">Kitchen</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="spa">
+                <label class="form-check-label" for="spa">Boiler Balcony Access</label>
               </div>
             </div>
+          </div>
 
-            <button type="button" class="btn btn-primary w-100" id="apply-filters-btn">Apply Filters</button>
+          <button type="button" class="btn btn-primary w-100" id="apply-filters-btn">Apply Filters</button>
+        </div>
+      </div>
+
+      <div class="col-lg-9 col-md-8">
+        <!--Sorting features -->
+        <div class="rooms-header d-flex justify-content-between align-items-center mb-4" data-aos="fade-left" data-aos-delay="150">
+          <div class="results-count">
+            <span>Showing <span id="room-count">0</span> Stays</span>
+          </div>
+          <div class="sort-options">
+            <select class="form-select" id="sort-by-select">
+              <option value="featured">Sort by: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <!-- Removed 'rating' as it's not in our data -->
+            </select>
           </div>
         </div>
 
-        <div class="col-lg-9 col-md-8">
-          <!--Sorting features -->
-          <div class="rooms-header d-flex justify-content-between align-items-center mb-4" data-aos="fade-left" data-aos-delay="150">
-            <div class="results-count">
-              <span>Showing <span id="room-count">0</span> Stays</span>
-            </div>
-            <div class="sort-options">
-              <select class="form-select" id="sort-by-select">
-                <option value="featured">Sort by: Featured</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <!-- Removed 'rating' as it's not in our data -->
-              </select>
-            </div>
-          </div>
+        <div class="row gy-4" id="room-listings-container">
+          <!-- Room cards will be dynamically loaded here -->
+          <div class="loading-indicator">Loading rooms...</div>
+        </div>
 
-          <div class="row gy-4" id="room-listings-container">
-            <!-- Room cards will be dynamically loaded here -->
-            <div class="loading-indicator">Loading rooms...</div>
-          </div>
-
-          <div class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="500">
-            <nav aria-label="Room listings pagination">
-              <ul class="pagination justify-content-center" id="pagination-controls">
-                <!-- Pagination will be dynamically loaded here -->
-              </ul>
-            </nav>
-          </div>
-
+        <div class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="500">
+          <nav aria-label="Room listings pagination">
+            <ul class="pagination justify-content-center" id="pagination-controls">
+              <!-- Pagination will be dynamically loaded here -->
+            </ul>
+          </nav>
         </div>
 
       </div>
 
     </div>
 
-  </section><!-- /Rooms 2 Section -->
+  </div>
+
+</section><!-- /Rooms 2 Section -->
+
 
   </main>
 
