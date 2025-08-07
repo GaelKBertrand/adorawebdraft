@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -90,8 +90,8 @@
                 </div>
               </div>
               <div class="thumbnail-gallery thumbnail-list">
-                <!-- Thumbnail images preserved. Dynamic content can be added here if needed -->
-                <div class="swiper-wrapper">
+                <!-- Thumbnail images will be dynamically replaced or added here -->
+                <div class="swiper-wrapper" id="thumbnail-swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="assets/img/hotel/room-1-thumb.webp" class="img-fluid" alt="">
                     </div>
@@ -288,19 +288,21 @@
   <!-- Custom Script for dynamic content loading -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Function to sanitize the hotel name for URL ID comparison
-      function sanitizeHotelName(name) {
+      // Function to sanitize the hotel and room names for URL ID and tab ID comparison
+      function sanitizeName(name) {
         return name.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
       }
 
       const urlParams = new URLSearchParams(window.location.search);
       const hotelIdFromUrl = urlParams.get('id');
 
-      const hotelNameElement = document.getElementById('hotel-name');
+      // Get the existing elements by their IDs to populate them
+      const pageTitleElement = document.getElementById('page-title');
+      const hotelLongDescriptionPage = document.getElementById('hotel-long-description-page');
       const hotelNameBreadcrumb = document.getElementById('hotel-name-breadcrumb');
+      const hotelNameElement = document.getElementById('hotel-name');
       const hotelAddressElement = document.getElementById('hotel-address');
       const hotelShortDescriptionElement = document.getElementById('hotel-short-description');
-      const hotelLongDescriptionPage = document.getElementById('hotel-long-description-page');
       const amenitiesListElement = document.getElementById('amenities-list');
       const roomOptionsSelect = document.getElementById('room-option');
       const bookingForm = document.getElementById('booking-form');
@@ -325,38 +327,42 @@
           return response.json();
         })
         .then(data => {
-          // Find the hotel that matches the ID from the URL, fixing the ID comparison
-          // The hotel IDs in the URL are like 'amaira-hotel-main', so we need to match accordingly
+          // Find the hotel that matches the ID from the URL, using the new `sanitizeName` function
           selectedHotel = data.find(hotel => {
-              const sanitizedName = sanitizeHotelName(hotel['Main Hotel']);
-              return `${sanitizedName}-main` === hotelIdFromUrl;
+              const sanitizedMainHotelName = sanitizeName(hotel['Main Hotel']);
+              return `${sanitizedMainHotelName}-main` === hotelIdFromUrl;
           });
 
           if (selectedHotel) {
             // Update the page with the hotel details
-            hotelNameElement.textContent = selectedHotel['Main Hotel'];
+            pageTitleElement.textContent = selectedHotel['Main Hotel'];
             hotelNameBreadcrumb.textContent = selectedHotel['Main Hotel'];
+            hotelNameElement.textContent = selectedHotel['Main Hotel'];
             hotelAddressElement.textContent = selectedHotel['Address Line (Street, Landmark, Village, )'];
-            // Since the main page has a 'Short Description' and 'Long Description', we can populate both
-            hotelShortDescriptionElement.textContent = selectedHotel.rooms[0]['Short Description']; // Using the first room's description
-            hotelLongDescriptionPage.textContent = selectedHotel.rooms[0]['Long Description'];
 
-            // Populate amenities
+            // Populate amenities from the JSON, keeping the original styling and icons
             const amenitiesText = selectedHotel['Amenities (same for all hotels)'];
             const amenitiesHtml = amenitiesText.split('\n').filter(line => line.trim().length > 0).map(line => {
-                // Check if the line contains a list item
-                if (line.trim().startsWith('•') || line.trim().startsWith('🛏️') || line.trim().startsWith('🏕️')) {
-                    // It's a header or special character, treat it as a bold element
+                if (line.trim().startsWith('🛏️') || line.trim().startsWith('🍽️') || line.trim().startsWith('🏕️')) {
+                    // This is a section header, style it accordingly
                     return `<br><strong>${line.trim()}</strong>`;
-                } else {
-                    return `<li>${line.trim()}</li>`;
+                } else if (line.trim().startsWith('•')) {
+                    // This is a list item under a header
+                    return `<li>${line.trim().substring(1).trim()}</li>`;
                 }
+                // Handle any other cases or simply return the line in a list item
+                return `<li>${line.trim()}</li>`;
             }).join('');
             amenitiesListElement.innerHTML = `<ul>${amenitiesHtml}</ul>`;
 
-            // Populate room options in the booking form dropdown and room tabs
+            // Clear the original placeholder rooms
+            roomOptionsSelect.innerHTML = '<option value="" selected disabled>Select a Room Option</option>';
+            roomTabsList.innerHTML = '';
+            roomTabContent.innerHTML = '';
+
+            // Populate room options in the booking form dropdown and create room tabs and content
             selectedHotel.rooms.forEach((room, index) => {
-              // Populate select dropdown
+              // Populate the select dropdown
               const option = document.createElement('option');
               option.value = room['Hotel rooms options'];
               option.textContent = room['Hotel rooms options'];
@@ -364,7 +370,7 @@
 
               // Create tab button
               const isActive = index === 0;
-              const roomTabId = sanitizeHotelName(room['Hotel rooms options']);
+              const roomTabId = sanitizeName(room['Hotel rooms options']);
               const tabItem = document.createElement('li');
               tabItem.classList.add('nav-item');
               tabItem.setAttribute('role', 'presentation');
@@ -397,18 +403,23 @@
                 </div>
               `;
               roomTabContent.appendChild(tabContentDiv);
+
+              // Set the initial short and long descriptions from the first room
+              if (index === 0) {
+                hotelShortDescriptionElement.textContent = room['Short Description'];
+                hotelLongDescriptionPage.textContent = room['Long Description'];
+                selectedRoomData = room;
+              }
             });
 
-            // Set the first room as the initially selected room for the booking form
-            if (selectedHotel.rooms.length > 0) {
-              selectedRoomData = selectedHotel.rooms[0];
-            }
-
           } else {
-            hotelNameElement.textContent = 'Hotel Not Found';
+            // Handle the case where the hotel is not found
+            pageTitleElement.textContent = 'Hotel Not Found';
             hotelNameBreadcrumb.textContent = 'Not Found';
+            hotelNameElement.textContent = 'Hotel Not Found';
             hotelLongDescriptionPage.textContent = 'The hotel you are looking for does not exist. Please check the URL.';
-            // Hide the form and other dynamic sections if no hotel is found
+
+            // Hide the dynamic content sections if no hotel is found
             bookingForm.style.display = 'none';
             roomTabsList.style.display = 'none';
           }
@@ -428,13 +439,14 @@
           return;
         }
 
-        selectedRoomData = selectedHotel.rooms.find(room => room['Hotel rooms options'] === selectedRoomName);
+        const room = selectedHotel.rooms.find(r => r['Hotel rooms options'] === selectedRoomName);
+        selectedRoomData = room;
 
-        if (selectedRoomData) {
+        if (room) {
           const totalPeople = adults + children;
-          const groupPrice = selectedRoomData['Group Price (per night)'];
-          const maxGroupPeople = selectedRoomData['Max people paying group price'];
-          const extraChargesPerPerson = selectedRoomData['Extra charges for extra people'];
+          const groupPrice = parseFloat(room['Group Price (per night)']);
+          const maxGroupPeople = parseInt(room['Max people paying group price'], 10);
+          const extraChargesPerPerson = parseFloat(room['Extra charges for extra people']);
 
           let extraPeople = 0;
           if (totalPeople > maxGroupPeople) {
@@ -457,8 +469,18 @@
         }
       }
 
+      // Update the short description when a new room option is selected from the dropdown
+      roomOptionsSelect.addEventListener('change', () => {
+        const selectedRoomName = roomOptionsSelect.value;
+        const room = selectedHotel.rooms.find(r => r['Hotel rooms options'] === selectedRoomName);
+        if (room) {
+          hotelShortDescriptionElement.textContent = room['Short Description'];
+          hotelLongDescriptionPage.textContent = room['Long Description'];
+        }
+        calculatePrice();
+      });
+
       // Add event listeners for form inputs to trigger price calculation
-      roomOptionsSelect.addEventListener('change', calculatePrice);
       checkInDateInput.addEventListener('change', calculatePrice);
       checkOutDateInput.addEventListener('change', calculatePrice);
       adultsCountInput.addEventListener('input', calculatePrice);
@@ -484,7 +506,6 @@
           sentMessage.style.display = 'none';
         }, 5000);
       });
-
     });
   </script>
   <!-- Link to Flatpickr for date pickers -->
