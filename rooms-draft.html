@@ -649,6 +649,165 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
+
+  <!-- Insert this at the end of the <body> tag in room-details.html -->
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const sanitize = str => str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.get("id");
+    if (!idParam) {
+      document.querySelector(".main").innerHTML = "<div class='container text-center py-5'><h2>Hotel ID Missing</h2></div>";
+      return;
+    }
+
+    const response = await fetch("hotels.json");
+    const hotels = await response.json();
+
+    const hotel = hotels.find(h => sanitize(h["Main Hotel"]) === idParam);
+
+    if (!hotel) {
+      document.querySelector(".main").innerHTML = "<div class='container text-center py-5'><h2>Hotel Not Found</h2></div>";
+      return;
+    }
+
+    // Populate text content
+    document.getElementById("page-title").textContent = hotel["Main Hotel"];
+    document.getElementById("hotel-name").textContent = hotel["Main Hotel"];
+    document.getElementById("hotel-address").textContent = hotel["Address Line (Street, Landmark, Village, )"] || "";
+
+    if (hotel.rooms?.[0]) {
+      document.getElementById("hotel-short-description")?.textContent = hotel.rooms[0]["Short Description"] || "";
+      document.getElementById("hotel-long-description-page")?.textContent = hotel.rooms[0]["Long Description"] || "";
+    }
+
+    document.getElementById("hotel-name-breadcrumb")?.textContent = hotel["Main Hotel"];
+
+    // Images
+    const mainImg = document.getElementById("main-product-image");
+    if (hotel.images?.length > 0) {
+      mainImg.src = hotel.images[0];
+      mainImg.setAttribute("data-zoom", hotel.images[0]);
+    }
+
+    const thumbWrapper = document.getElementById("thumbnail-swiper-wrapper");
+    if (thumbWrapper) {
+      thumbWrapper.innerHTML = "";
+      hotel.images.forEach(img => {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide";
+        slide.innerHTML = `<img src="${img}" onerror="this.src='https://placehold.co/100x75/000/fff?text=No+Image'" class="img-fluid" alt="Thumbnail">`;
+        thumbWrapper.appendChild(slide);
+      });
+      if (window.Swiper) new Swiper('.thumbnail-gallery', {});
+    }
+
+    // Amenities
+    const amenitiesList = document.getElementById("amenities-list");
+    if (amenitiesList) {
+      const lines = hotel["Amenities (same for all hotels)"]?.split('\n').filter(Boolean) || [];
+      const ul = document.createElement("ul");
+      lines.forEach(line => {
+        const li = document.createElement("li");
+        if (/^[\u{1F6CC}\u{1F374}\u{1F3D5}]/u.test(line.trim())) {
+          li.innerHTML = `<strong>${line.trim()}</strong>`;
+        } else {
+          li.textContent = line.trim();
+        }
+        ul.appendChild(li);
+      });
+      amenitiesList.innerHTML = "";
+      amenitiesList.appendChild(ul);
+    }
+
+    // Rooms Tabs & Booking Form
+    const tabs = document.getElementById("roomTabs");
+    const tabContent = document.getElementById("roomTabsContent");
+    const roomSelect = document.getElementById("room-option");
+
+    if (tabs && tabContent && roomSelect && hotel.rooms?.length > 0) {
+      tabs.innerHTML = "";
+      tabContent.innerHTML = "";
+      roomSelect.innerHTML = `<option selected disabled>Select Room</option>`;
+
+      hotel.rooms.forEach((room, index) => {
+        const roomId = sanitize(room["Hotel rooms options"]);
+
+        // Tab header
+        const li = document.createElement("li");
+        li.className = "nav-item";
+        li.innerHTML = `<button class="nav-link ${index === 0 ? 'active' : ''}" id="${roomId}-tab" data-bs-toggle="tab" data-bs-target="#${roomId}" type="button">${room["Hotel rooms options"]}</button>`;
+        tabs.appendChild(li);
+
+        // Tab content
+        const div = document.createElement("div");
+        div.className = `tab-pane fade ${index === 0 ? 'show active' : ''}`;
+        div.id = roomId;
+        div.innerHTML = `
+          <p><strong>${room["Short Description"]}</strong></p>
+          <p>${room["Long Description"]}</p>
+          <ul>
+            <li><strong>Price:</strong> ₹${room["Group Price (per night)"]}</li>
+            <li><strong>Max People (Group Price):</strong> ${room["Max people paying group price"]}</li>
+            <li><strong>Extra Charges:</strong> ₹${room["Extra charges for extra people"]}</li>
+            <li><strong>Max Occupancy:</strong> ${room["Max Occupancy "]}</li>
+            <li><strong>Max Adults:</strong> ${room["Max Adults"]}</li>
+            <li><strong>Max Children:</strong> ${room["Max Children"]}</li>
+          </ul>
+        `;
+        tabContent.appendChild(div);
+
+        const option = document.createElement("option");
+        option.value = roomId;
+        option.textContent = room["Hotel rooms options"];
+        roomSelect.appendChild(option);
+      });
+    }
+
+    // Booking Form Logic
+    const getDays = (start, end) => {
+      const diff = new Date(end) - new Date(start);
+      return Math.max(1, Math.round(diff / (1000 * 60 * 60 * 24)));
+    };
+
+    const updatePrice = () => {
+      const roomId = roomSelect?.value;
+      const room = hotel.rooms.find(r => sanitize(r["Hotel rooms options"]) === roomId);
+      if (!room) return;
+
+      const checkin = document.getElementById("checkin-date").value;
+      const checkout = document.getElementById("checkout-date").value;
+      const guests = parseInt(document.getElementById("guests").value || 1);
+      const nights = getDays(checkin, checkout);
+
+      const base = room["Group Price (per night)"] || 0;
+      const group = room["Max people paying group price"] || 0;
+      const extra = room["Extra charges for extra people"] || 0;
+      const extraPeople = Math.max(0, guests - group);
+      const total = (base + (extraPeople * extra)) * nights;
+
+      const priceDisplay = document.querySelector(".price-value .amount");
+      if (priceDisplay) priceDisplay.textContent = total;
+    };
+
+    ["checkin-date", "checkout-date", "guests", "room-option"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("change", updatePrice);
+    });
+
+    // Use flatpickr if already loaded
+    if (window.flatpickr) {
+      flatpickr("#checkin-date", { dateFormat: "Y-m-d" });
+      flatpickr("#checkout-date", { dateFormat: "Y-m-d" });
+    }
+  });
+</script>
+
+
+
+
+
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 

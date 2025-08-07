@@ -35,9 +35,11 @@
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
+
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <img src="assets/img/logo.png" alt="">
       </a>
+
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
@@ -50,7 +52,9 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+
       <a class="btn-getstarted d-none d-sm-block" href="booking.html">Book On App</a>
+
     </div>
   </header>
 
@@ -294,7 +298,6 @@
 
       // Helper function to sanitize hotel names for URL matching
       function sanitizeName(name) {
-        // Corrected: handle the `-main` suffix from the URL IDs
         return name.toLowerCase().replace('-main', '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, '-');
       }
 
@@ -309,7 +312,6 @@
         console.error('Could not load hotels.json:', error);
       }
 
-      // Sanitize the URL ID to remove the `-main` suffix for a correct match
       if (hotelId) {
         hotelId = hotelId.replace('-main', '');
         selectedHotel = hotels.find(hotel => sanitizeName(hotel['Main Hotel']) === hotelId);
@@ -346,11 +348,9 @@
       const thumbnailSwiperWrapper = document.getElementById('thumbnail-swiper-wrapper');
 
       if (selectedHotel.images && selectedHotel.images.length > 0) {
-        // Set main image and zoom attribute
         mainImage.src = selectedHotel.images[0];
         mainImage.setAttribute('data-zoom', selectedHotel.images[0]);
 
-        // Populate thumbnail gallery
         thumbnailSwiperWrapper.innerHTML = '';
         selectedHotel.images.forEach(imageUrl => {
           const swiperSlide = document.createElement('div');
@@ -382,7 +382,6 @@
                 mainImage.setAttribute('data-zoom', clickedImg.src);
             }
         });
-
       }
 
       // Amenities
@@ -488,7 +487,6 @@
           return;
         }
 
-        // Calculate number of nights
         const checkInDate = new Date(checkIn);
         const checkOutDate = new Date(checkOut);
         const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
@@ -513,14 +511,11 @@
         priceDisplay.style.display = 'block';
       }
 
-      // Add event listeners to trigger price calculation
       const formInputs = [roomOptionInput, checkInDateInput, checkOutDateInput, adultsCountInput, childrenCountInput];
       formInputs.forEach(input => input.addEventListener('change', calculatePrice));
 
-      // Initialize price calculation on page load if data is pre-filled
       calculatePrice();
 
-      // Event listener for the booking form submission
       document.getElementById('booking-form').addEventListener('submit', function(event) {
         event.preventDefault();
         const sentMessage = this.querySelector('.sent-message');
