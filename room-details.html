@@ -288,13 +288,14 @@
       // ----------------------------------------------------------------------
 
       const params = new URLSearchParams(window.location.search);
-      const hotelId = params.get('id');
+      let hotelId = params.get('id');
       let selectedHotel = null;
       let hotels = [];
 
       // Helper function to sanitize hotel names for URL matching
       function sanitizeName(name) {
-        return name.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, '-');
+        // Corrected: handle the `-main` suffix from the URL IDs
+        return name.toLowerCase().replace('-main', '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, '-');
       }
 
       // Fetch hotels.json
@@ -308,8 +309,9 @@
         console.error('Could not load hotels.json:', error);
       }
 
-      // Find the hotel that matches the sanitized ID
+      // Sanitize the URL ID to remove the `-main` suffix for a correct match
       if (hotelId) {
+        hotelId = hotelId.replace('-main', '');
         selectedHotel = hotels.find(hotel => sanitizeName(hotel['Main Hotel']) === hotelId);
       }
 
