@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -58,11 +58,11 @@
     <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/hotel/showcase-7.webp);">
       <div class="container position-relative">
         <h1 id="page-title">Room Details</h1>
-        <p id="page-description">Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
+        <p id="hotel-long-description-page">Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current" id="hotel-breadcrumb">Room Details</li>
+            <li class="current" id="hotel-name-breadcrumb">Room Details</li>
           </ol>
         </nav>
       </div>
@@ -78,6 +78,7 @@
           <div class="col-lg-8">
             <div class="room-gallery">
               <div class="main-image-container image-zoom-container">
+                <!-- Original image preserved. Placeholder for dynamic content -->
                 <img id="main-product-image" src="assets/img/hotel/room-1.webp" alt="Room Image" class="img-fluid main-room-image" data-zoom="assets/img/hotel/room-1.webp">
                 <div class="image-nav-buttons">
                   <button class="image-nav-btn prev-image" type="button">
@@ -89,7 +90,25 @@
                 </div>
               </div>
               <div class="thumbnail-gallery thumbnail-list">
-                <!-- Thumbnail images will be dynamically added here -->
+                <!-- Thumbnail images preserved. Dynamic content can be added here if needed -->
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="assets/img/hotel/room-1-thumb.webp" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/hotel/room-2-thumb.webp" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/hotel/room-3-thumb.webp" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/hotel/room-4-thumb.webp" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/hotel/room-5-thumb.webp" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
               </div>
             </div>
           </div><!-- End Room Gallery -->
@@ -98,7 +117,7 @@
           <div class="col-lg-4">
             <div class="room-details-sidebar" data-aos="fade-left" data-aos-delay="200">
               <div class="room-header">
-                <h2 id="hotel-name">Hotel Name</h2>
+                <h2 id="hotel-name">Room Details</h2>
                 <div class="room-rating">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -107,12 +126,12 @@
                   <i class="bi bi-star-fill"></i>
                 </div>
                 <div class="room-meta">
-                    <span id="hotel-address">Address Line</span>
+                    <span id="hotel-address"></span>
                 </div>
               </div>
               <div class="room-description mt-3">
                 <h3 class="h4">About this hotel</h3>
-                <p id="hotel-long-description"></p>
+                <p id="hotel-short-description"></p>
               </div>
 
               <!-- Booking Form -->
@@ -122,8 +141,7 @@
                   <div class="row gy-3">
                     <div class="col-12">
                       <select name="room-option" id="room-option" class="form-select">
-                        <option value="">Select a Room Option</option>
-                        <!-- Room options will be dynamically populated here -->
+                        <option value="" selected disabled>Select a Room Option</option>
                       </select>
                     </div>
                     <div class="col-md-6">
@@ -243,10 +261,6 @@
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1">LuxuryHotel</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/luxury-hotel-bootstrap-template/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
@@ -271,195 +285,205 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Custom Script for dynamic content loading -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Function to sanitize hotel ID from URL
-        function sanitizeHotelId(id) {
-            return id.toLowerCase().replace(/[^a-z0-9]/g, '-');
-        }
+      // Function to sanitize the hotel name for URL ID comparison
+      function sanitizeHotelName(name) {
+        return name.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
+      }
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const hotelIdFromUrl = urlParams.get('id');
+      const urlParams = new URLSearchParams(window.location.search);
+      const hotelIdFromUrl = urlParams.get('id');
 
-        const hotelNameElement = document.getElementById('hotel-name');
-        const hotelAddressElement = document.getElementById('hotel-address');
-        const hotelLongDescriptionElement = document.getElementById('hotel-long-description');
-        const amenitiesListElement = document.getElementById('amenities-list');
-        const roomOptionsSelect = document.getElementById('room-option');
-        const bookingForm = document.getElementById('booking-form');
-        const priceDisplayElement = document.getElementById('price-display');
-        const totalPriceElement = document.getElementById('total-price');
-        const checkInDateInput = document.getElementById('check-in-date');
-        const checkOutDateInput = document.getElementById('check-out-date');
-        const adultsCountInput = document.getElementById('adults-count');
-        const childrenCountInput = document.getElementById('children-count');
-        const roomTabsList = document.getElementById('pills-tab');
-        const roomTabContent = document.getElementById('pills-tabContent');
-        const hotelBreadcrumb = document.getElementById('hotel-breadcrumb');
-        const pageTitle = document.getElementById('page-title');
-        const pageDescription = document.getElementById('page-description');
+      const hotelNameElement = document.getElementById('hotel-name');
+      const hotelNameBreadcrumb = document.getElementById('hotel-name-breadcrumb');
+      const hotelAddressElement = document.getElementById('hotel-address');
+      const hotelShortDescriptionElement = document.getElementById('hotel-short-description');
+      const hotelLongDescriptionPage = document.getElementById('hotel-long-description-page');
+      const amenitiesListElement = document.getElementById('amenities-list');
+      const roomOptionsSelect = document.getElementById('room-option');
+      const bookingForm = document.getElementById('booking-form');
+      const priceDisplayElement = document.getElementById('price-display');
+      const totalPriceElement = document.getElementById('total-price');
+      const checkInDateInput = document.getElementById('check-in-date');
+      const checkOutDateInput = document.getElementById('check-out-date');
+      const adultsCountInput = document.getElementById('adults-count');
+      const childrenCountInput = document.getElementById('children-count');
+      const roomTabsList = document.getElementById('pills-tab');
+      const roomTabContent = document.getElementById('pills-tabContent');
 
-        let selectedHotel = null;
-        let selectedRoom = null;
+      let selectedHotel = null;
+      let selectedRoomData = null;
 
-        // Fetch the JSON data
-        fetch('hotels.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Find the hotel that matches the ID from the URL
-                selectedHotel = data.find(hotel => sanitizeHotelId(hotel['Main Hotel']) === hotelIdFromUrl);
+      // Fetch the JSON data from the provided URL
+      fetch('hotels.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Find the hotel that matches the ID from the URL, fixing the ID comparison
+          // The hotel IDs in the URL are like 'amaira-hotel-main', so we need to match accordingly
+          selectedHotel = data.find(hotel => {
+              const sanitizedName = sanitizeHotelName(hotel['Main Hotel']);
+              return `${sanitizedName}-main` === hotelIdFromUrl;
+          });
 
-                if (selectedHotel) {
-                    // Populate the hotel details
-                    hotelNameElement.textContent = selectedHotel['Main Hotel'];
-                    pageTitle.textContent = selectedHotel['Main Hotel'];
-                    hotelBreadcrumb.textContent = selectedHotel['Main Hotel'];
-                    hotelAddressElement.textContent = selectedHotel['Address Line (Street, Landmark, Village, )'];
-                    hotelLongDescriptionElement.textContent = selectedHotel['Long Description']; // Assuming you'll add this to the JSON
-                    pageDescription.textContent = selectedHotel['Long Description'] || selectedHotel['Short Description'] || "Experience a blend of comfort and creativity in our cozy suites.";
+          if (selectedHotel) {
+            // Update the page with the hotel details
+            hotelNameElement.textContent = selectedHotel['Main Hotel'];
+            hotelNameBreadcrumb.textContent = selectedHotel['Main Hotel'];
+            hotelAddressElement.textContent = selectedHotel['Address Line (Street, Landmark, Village, )'];
+            // Since the main page has a 'Short Description' and 'Long Description', we can populate both
+            hotelShortDescriptionElement.textContent = selectedHotel.rooms[0]['Short Description']; // Using the first room's description
+            hotelLongDescriptionPage.textContent = selectedHotel.rooms[0]['Long Description'];
 
-                    // Populate amenities
-                    const amenitiesHtml = selectedHotel['Amenities (same for all hotels)'].split('\n\n').map(item => {
-                        return `<p>${item.trim().replace(/\n/g, '<br>')}</p>`;
-                    }).join('');
-                    amenitiesListElement.innerHTML = amenitiesHtml;
-
-                    // Populate room options in the booking form dropdown
-                    selectedHotel.rooms.forEach(room => {
-                        const option = document.createElement('option');
-                        option.value = room['Hotel rooms options'];
-                        option.textContent = room['Hotel rooms options'];
-                        roomOptionsSelect.appendChild(option);
-                    });
-
-                    // Dynamically create room tabs
-                    selectedHotel.rooms.forEach((room, index) => {
-                        const isActive = index === 0;
-                        const roomTabId = room['Hotel rooms options'].replace(/\s/g, '-').toLowerCase();
-
-                        // Create tab button
-                        const tabItem = document.createElement('li');
-                        tabItem.classList.add('nav-item');
-                        tabItem.setAttribute('role', 'presentation');
-                        tabItem.innerHTML = `<button class="nav-link ${isActive ? 'active' : ''}" id="pills-${roomTabId}-tab" data-bs-toggle="pill" data-bs-target="#pills-${roomTabId}" type="button" role="tab" aria-controls="pills-${roomTabId}" aria-selected="${isActive}">${room['Hotel rooms options']}</button>`;
-                        roomTabsList.appendChild(tabItem);
-
-                        // Create tab content
-                        const tabContentDiv = document.createElement('div');
-                        tabContentDiv.classList.add('tab-pane', 'fade', 'show', 'border', 'rounded', 'p-3', `${isActive ? 'active' : ''}`);
-                        tabContentDiv.id = `pills-${roomTabId}`;
-                        tabContentDiv.setAttribute('role', 'tabpanel');
-                        tabContentDiv.setAttribute('aria-labelledby', `pills-${roomTabId}-tab`);
-
-                        // Create the content for the tab
-                        tabContentDiv.innerHTML = `
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>${room['Hotel rooms options']}</h4>
-                                    <p>${room['Short Description']}</p>
-                                    <p>${room['Long Description']}</p>
-                                    <ul class="list-unstyled">
-                                        <li><strong>Group Price (per night):</strong> ₹${room['Group Price (per night)']}/-</li>
-                                        <li><strong>Max people paying group price:</strong> ${room['Max people paying group price']}</li>
-                                        <li><strong>Extra charges for extra people:</strong> ₹${room['Extra charges for extra people']}/-</li>
-                                        <li><strong>Max Occupancy:</strong> ${room['Max Occupancy ']}</li>
-                                        <li><strong>Max Adults:</strong> ${room['Max Adults']}</li>
-                                        <li><strong>Max Children:</strong> ${room['Max Children']}</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <img src="https://placehold.co/600x400/D3D3D3/000000?text=Room+Image" class="img-fluid rounded" alt="Room image for ${room['Hotel rooms options']}">
-                                </div>
-                            </div>
-                        `;
-                        roomTabContent.appendChild(tabContentDiv);
-                    });
-
+            // Populate amenities
+            const amenitiesText = selectedHotel['Amenities (same for all hotels)'];
+            const amenitiesHtml = amenitiesText.split('\n').filter(line => line.trim().length > 0).map(line => {
+                // Check if the line contains a list item
+                if (line.trim().startsWith('•') || line.trim().startsWith('🛏️') || line.trim().startsWith('🏕️')) {
+                    // It's a header or special character, treat it as a bold element
+                    return `<br><strong>${line.trim()}</strong>`;
                 } else {
-                    // Handle case where no hotel is found
-                    hotelNameElement.textContent = 'Hotel Not Found';
-                    pageTitle.textContent = 'Hotel Not Found';
-                    hotelBreadcrumb.textContent = 'Not Found';
-                    pageDescription.textContent = 'The hotel you are looking for does not exist.';
+                    return `<li>${line.trim()}</li>`;
                 }
-            })
-            .catch(error => console.error('Error fetching data:', error));
+            }).join('');
+            amenitiesListElement.innerHTML = `<ul>${amenitiesHtml}</ul>`;
 
-        // Function to calculate total price
-        function calculatePrice() {
-            const selectedRoomName = roomOptionsSelect.value;
-            const adults = parseInt(adultsCountInput.value, 10);
-            const children = parseInt(childrenCountInput.value, 10);
-            const checkInDate = new Date(checkInDateInput.value);
-            const checkOutDate = new Date(checkOutDateInput.value);
+            // Populate room options in the booking form dropdown and room tabs
+            selectedHotel.rooms.forEach((room, index) => {
+              // Populate select dropdown
+              const option = document.createElement('option');
+              option.value = room['Hotel rooms options'];
+              option.textContent = room['Hotel rooms options'];
+              roomOptionsSelect.appendChild(option);
 
-            if (!selectedRoomName || isNaN(adults) || isNaN(children) || !checkInDate || !checkOutDate) {
-                priceDisplayElement.style.display = 'none';
-                return;
+              // Create tab button
+              const isActive = index === 0;
+              const roomTabId = sanitizeHotelName(room['Hotel rooms options']);
+              const tabItem = document.createElement('li');
+              tabItem.classList.add('nav-item');
+              tabItem.setAttribute('role', 'presentation');
+              tabItem.innerHTML = `<button class="nav-link ${isActive ? 'active' : ''}" id="pills-${roomTabId}-tab" data-bs-toggle="pill" data-bs-target="#pills-${roomTabId}" type="button" role="tab" aria-controls="pills-${roomTabId}" aria-selected="${isActive}"><h5>${room['Hotel rooms options']}</h5></button>`;
+              roomTabsList.appendChild(tabItem);
+
+              // Create tab content
+              const tabContentDiv = document.createElement('div');
+              tabContentDiv.classList.add('tab-pane', 'fade', 'p-4', 'rounded', 'border', `${isActive ? 'show active' : ''}`);
+              tabContentDiv.id = `pills-${roomTabId}`;
+              tabContentDiv.setAttribute('role', 'tabpanel');
+              tabContentDiv.setAttribute('aria-labelledby', `pills-${roomTabId}-tab`);
+
+              tabContentDiv.innerHTML = `
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h4>${room['Short Description']}</h4>
+                        <p>${room['Long Description']}</p>
+                    </div>
+                    <div class="col-lg-4 d-flex align-items-center">
+                        <ul class="list-unstyled">
+                            <li><strong>Group Price (per night):</strong> ₹${room['Group Price (per night)']}/-</li>
+                            <li><strong>Max people paying group price:</strong> ${room['Max people paying group price']}</li>
+                            <li><strong>Extra charges per extra person:</strong> ₹${room['Extra charges for extra people']}/-</li>
+                            <li><strong>Max Occupancy:</strong> ${room['Max Occupancy ']}</li>
+                            <li><strong>Max Adults:</strong> ${room['Max Adults']}</li>
+                            <li><strong>Max Children:</strong> ${room['Max Children']}</li>
+                        </ul>
+                    </div>
+                </div>
+              `;
+              roomTabContent.appendChild(tabContentDiv);
+            });
+
+            // Set the first room as the initially selected room for the booking form
+            if (selectedHotel.rooms.length > 0) {
+              selectedRoomData = selectedHotel.rooms[0];
             }
 
-            if (selectedHotel) {
-                selectedRoom = selectedHotel.rooms.find(room => room['Hotel rooms options'] === selectedRoomName);
-                if (selectedRoom) {
-                    const totalPeople = adults + children;
-                    const groupPrice = selectedRoom['Group Price (per night)'];
-                    const maxGroupPeople = selectedRoom['Max people paying group price'];
-                    const extraChargesPerPerson = selectedRoom['Extra charges for extra people'];
+          } else {
+            hotelNameElement.textContent = 'Hotel Not Found';
+            hotelNameBreadcrumb.textContent = 'Not Found';
+            hotelLongDescriptionPage.textContent = 'The hotel you are looking for does not exist. Please check the URL.';
+            // Hide the form and other dynamic sections if no hotel is found
+            bookingForm.style.display = 'none';
+            roomTabsList.style.display = 'none';
+          }
+        })
+        .catch(error => console.error('Error fetching data:', error));
 
-                    let extraPeople = 0;
-                    if (totalPeople > maxGroupPeople) {
-                        extraPeople = totalPeople - maxGroupPeople;
-                    }
+      // Function to calculate total price
+      function calculatePrice() {
+        const selectedRoomName = roomOptionsSelect.value;
+        const adults = parseInt(adultsCountInput.value, 10);
+        const children = parseInt(childrenCountInput.value, 10);
+        const checkIn = new Date(checkInDateInput.value);
+        const checkOut = new Date(checkOutDateInput.value);
 
-                    const timeDiff = Math.abs(checkOutDate.getTime() - checkInDate.getTime());
-                    const numNights = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-                    const roomPricePerNight = groupPrice + (extraPeople * extraChargesPerPerson);
-                    const totalPrice = roomPricePerNight * numNights;
-
-                    if (!isNaN(totalPrice) && numNights > 0) {
-                        totalPriceElement.textContent = `₹${totalPrice.toFixed(2)}`;
-                        priceDisplayElement.style.display = 'block';
-                    } else {
-                        priceDisplayElement.style.display = 'none';
-                    }
-                }
-            }
+        if (!selectedRoomName || isNaN(adults) || isNaN(children) || !checkIn || !checkOut || checkIn >= checkOut) {
+          priceDisplayElement.style.display = 'none';
+          return;
         }
 
-        // Add event listeners for form inputs to trigger price calculation
-        roomOptionsSelect.addEventListener('change', calculatePrice);
-        checkInDateInput.addEventListener('change', calculatePrice);
-        checkOutDateInput.addEventListener('change', calculatePrice);
-        adultsCountInput.addEventListener('input', calculatePrice);
-        childrenCountInput.addEventListener('input', calculatePrice);
+        selectedRoomData = selectedHotel.rooms.find(room => room['Hotel rooms options'] === selectedRoomName);
 
-        // Simple datepicker functionality (you may use a library for a more robust solution)
-        flatpickr("#check-in-date", {
-            dateFormat: "Y-m-d",
-            minDate: "today"
-        });
-        flatpickr("#check-out-date", {
-            dateFormat: "Y-m-d",
-            minDate: "today"
-        });
+        if (selectedRoomData) {
+          const totalPeople = adults + children;
+          const groupPrice = selectedRoomData['Group Price (per night)'];
+          const maxGroupPeople = selectedRoomData['Max people paying group price'];
+          const extraChargesPerPerson = selectedRoomData['Extra charges for extra people'];
 
-        // Event listener for the booking form submission
-        bookingForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Here you would handle form submission, e.g., send data to a server
-            // For now, we'll just show a success message
-            const sentMessage = this.querySelector('.sent-message');
-            sentMessage.style.display = 'block';
-            setTimeout(() => {
-                sentMessage.style.display = 'none';
-            }, 5000);
-        });
+          let extraPeople = 0;
+          if (totalPeople > maxGroupPeople) {
+            extraPeople = totalPeople - maxGroupPeople;
+          }
+
+          const timeDiff = Math.abs(checkOut.getTime() - checkIn.getTime());
+          const numNights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+          if (isNaN(numNights) || numNights <= 0) {
+            priceDisplayElement.style.display = 'none';
+            return;
+          }
+
+          const roomPricePerNight = groupPrice + (extraPeople * extraChargesPerPerson);
+          const totalPrice = roomPricePerNight * numNights;
+
+          totalPriceElement.textContent = `₹${totalPrice.toFixed(2)}`;
+          priceDisplayElement.style.display = 'block';
+        }
+      }
+
+      // Add event listeners for form inputs to trigger price calculation
+      roomOptionsSelect.addEventListener('change', calculatePrice);
+      checkInDateInput.addEventListener('change', calculatePrice);
+      checkOutDateInput.addEventListener('change', calculatePrice);
+      adultsCountInput.addEventListener('input', calculatePrice);
+      childrenCountInput.addEventListener('input', calculatePrice);
+
+      // Simple datepicker functionality
+      flatpickr("#check-in-date", {
+          dateFormat: "Y-m-d",
+          minDate: "today"
+      });
+      flatpickr("#check-out-date", {
+          dateFormat: "Y-m-d",
+          minDate: "today"
+      });
+
+      // Event listener for the booking form submission
+      bookingForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Here you would handle form submission, e.g., send data to a server
+        const sentMessage = this.querySelector('.sent-message');
+        sentMessage.style.display = 'block';
+        setTimeout(() => {
+          sentMessage.style.display = 'none';
+        }, 5000);
+      });
 
     });
   </script>
