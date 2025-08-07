@@ -24,6 +24,8 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -73,12 +75,11 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row">
+        <div class="row" id="main-content">
           <!-- Room Gallery -->
           <div class="col-lg-8">
             <div class="room-gallery">
               <div class="main-image-container image-zoom-container">
-                <!-- Original image preserved. Placeholder for dynamic content -->
                 <img id="main-product-image" src="assets/img/hotel/room-1.webp" alt="Room Image" class="img-fluid main-room-image" data-zoom="assets/img/hotel/room-1.webp">
                 <div class="image-nav-buttons">
                   <button class="image-nav-btn prev-image" type="button">
@@ -90,23 +91,8 @@
                 </div>
               </div>
               <div class="thumbnail-gallery thumbnail-list">
-                <!-- Thumbnail images will be dynamically replaced or added here -->
                 <div class="swiper-wrapper" id="thumbnail-swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="assets/img/hotel/room-1-thumb.webp" class="img-fluid" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/img/hotel/room-2-thumb.webp" class="img-fluid" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/img/hotel/room-3-thumb.webp" class="img-fluid" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/img/hotel/room-4-thumb.webp" class="img-fluid" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/img/hotel/room-5-thumb.webp" class="img-fluid" alt="">
-                    </div>
+                    <!-- Thumbnail images will be dynamically replaced or added here -->
                 </div>
                 <div class="swiper-pagination"></div>
               </div>
@@ -185,11 +171,11 @@
                   <!-- Amenities will be dynamically added here -->
                 </div>
               </div>
-
             </div>
           </div><!-- End Room Details Sidebar -->
         </div>
 
+        <!-- Room Tabs & Content -->
         <div class="row mt-5">
             <div class="col-lg-12">
                 <div class="room-tabs" data-aos="fade-up" data-aos-delay="200">
@@ -201,6 +187,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- "Hotel Not Found" message -->
+        <div id="hotel-not-found-message" style="display: none;" class="text-center py-5">
+            <h2 class="display-4">Hotel Not Found</h2>
+            <p class="lead">The hotel you are looking for does not exist.</p>
+            <a href="rooms.html" class="btn btn-primary mt-3">Back to All Hotels</a>
         </div>
 
       </div>
@@ -216,12 +209,13 @@
           <a href="index.html" class="logo d-flex align-items-center">
             <span class="sitename">LuxuryHotel</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum non elit dolor...
+          </p>
           <div class="social-links d-flex mt-4">
-            <a href="https://x.com/Adorabooking/"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://facebook.com/adorahospitality"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/adorahospitality/"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.linkedin.com/company/adora-hospitality-solutions/"><i class="bi bi-linkedin"></i></a>
+            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -257,14 +251,12 @@
         </div>
       </div>
     </div>
-
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1">LuxuryHotel</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="sitename">LuxuryHotel</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -275,231 +267,260 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- Custom Script for dynamic content loading -->
+  <!-- Link to Flatpickr for date pickers -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- Dynamic Content Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Function to sanitize the hotel and room names for URL ID and tab ID comparison
+    document.addEventListener('DOMContentLoaded', async function() {
+      // ----------------------------------------------------------------------
+      // 1. Hotel Data Loading
+      // ----------------------------------------------------------------------
+
+      const params = new URLSearchParams(window.location.search);
+      const hotelId = params.get('id');
+      let selectedHotel = null;
+      let hotels = [];
+
+      // Helper function to sanitize hotel names for URL matching
       function sanitizeName(name) {
-        return name.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
+        return name.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, '-');
       }
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const hotelIdFromUrl = urlParams.get('id');
+      // Fetch hotels.json
+      try {
+        const response = await fetch('hotels.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        hotels = await response.json();
+      } catch (error) {
+        console.error('Could not load hotels.json:', error);
+      }
 
-      // Get the existing elements by their IDs to populate them
-      const pageTitleElement = document.getElementById('page-title');
-      const hotelLongDescriptionPage = document.getElementById('hotel-long-description-page');
-      const hotelNameBreadcrumb = document.getElementById('hotel-name-breadcrumb');
-      const hotelNameElement = document.getElementById('hotel-name');
-      const hotelAddressElement = document.getElementById('hotel-address');
-      const hotelShortDescriptionElement = document.getElementById('hotel-short-description');
-      const amenitiesListElement = document.getElementById('amenities-list');
-      const roomOptionsSelect = document.getElementById('room-option');
-      const bookingForm = document.getElementById('booking-form');
-      const priceDisplayElement = document.getElementById('price-display');
-      const totalPriceElement = document.getElementById('total-price');
+      // Find the hotel that matches the sanitized ID
+      if (hotelId) {
+        selectedHotel = hotels.find(hotel => sanitizeName(hotel['Main Hotel']) === hotelId);
+      }
+
+      const mainContent = document.getElementById('main-content');
+      const hotelNotFoundMessage = document.getElementById('hotel-not-found-message');
+
+      if (!selectedHotel) {
+        // Hide content and show "not found" message
+        if (mainContent) mainContent.style.display = 'none';
+        if (hotelNotFoundMessage) hotelNotFoundMessage.style.display = 'block';
+        return;
+      } else {
+        // Show content if a hotel is found
+        if (mainContent) mainContent.style.display = 'flex';
+        if (hotelNotFoundMessage) hotelNotFoundMessage.style.display = 'none';
+      }
+
+      // ----------------------------------------------------------------------
+      // 2. Dynamic Content Population
+      // ----------------------------------------------------------------------
+
+      // Hotel Details
+      document.getElementById('page-title').textContent = selectedHotel['Main Hotel'];
+      document.getElementById('hotel-name').textContent = selectedHotel['Main Hotel'];
+      document.getElementById('hotel-name-breadcrumb').textContent = selectedHotel['Main Hotel'];
+      document.getElementById('hotel-address').textContent = selectedHotel['Address Line (Street, Landmark, Village, )'];
+      document.getElementById('hotel-short-description').textContent = selectedHotel.rooms[0]['Short Description'];
+      document.getElementById('hotel-long-description-page').textContent = selectedHotel.rooms[0]['Long Description'];
+
+      // Images
+      const mainImage = document.getElementById('main-product-image');
+      const thumbnailSwiperWrapper = document.getElementById('thumbnail-swiper-wrapper');
+
+      if (selectedHotel.images && selectedHotel.images.length > 0) {
+        // Set main image and zoom attribute
+        mainImage.src = selectedHotel.images[0];
+        mainImage.setAttribute('data-zoom', selectedHotel.images[0]);
+
+        // Populate thumbnail gallery
+        thumbnailSwiperWrapper.innerHTML = '';
+        selectedHotel.images.forEach(imageUrl => {
+          const swiperSlide = document.createElement('div');
+          swiperSlide.className = 'swiper-slide';
+          swiperSlide.innerHTML = `<img src="${imageUrl}" class="img-fluid" alt="Hotel Image" onerror="this.onerror=null; this.src='https://placehold.co/100x75/000/fff?text=No+Image';">`;
+          thumbnailSwiperWrapper.appendChild(swiperSlide);
+        });
+
+        // Re-initialize Swiper
+        new Swiper('.thumbnail-gallery', {
+          loop: false,
+          slidesPerView: 4,
+          spaceBetween: 10,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.next-image',
+            prevEl: '.prev-image',
+          },
+        });
+
+        // Add event listener to update main image on thumbnail click
+        thumbnailSwiperWrapper.addEventListener('click', (e) => {
+            const clickedImg = e.target.closest('img');
+            if (clickedImg) {
+                mainImage.src = clickedImg.src;
+                mainImage.setAttribute('data-zoom', clickedImg.src);
+            }
+        });
+
+      }
+
+      // Amenities
+      const amenitiesList = document.getElementById('amenities-list');
+      const amenitiesString = selectedHotel['Amenities (same for all hotels)'];
+      if (amenitiesString) {
+        const amenitiesArray = amenitiesString.split('\n').filter(line => line.trim() !== '');
+        const ul = document.createElement('ul');
+        ul.className = 'list-unstyled';
+        amenitiesArray.forEach(line => {
+          const li = document.createElement('li');
+          if (line.startsWith('🛏️') || line.startsWith('🍽️') || line.startsWith('🏕️')) {
+            li.innerHTML = `<strong>${line}</strong>`;
+          } else {
+            li.textContent = line.trim();
+          }
+          ul.appendChild(li);
+        });
+        amenitiesList.innerHTML = '';
+        amenitiesList.appendChild(ul);
+      }
+
+      // Rooms Tabs & Booking Form
+      const pillsTab = document.getElementById('pills-tab');
+      const pillsTabContent = document.getElementById('pills-tabContent');
+      const roomOptionSelect = document.getElementById('room-option');
+      let currentRoomData = null;
+
+      // Clear previous content
+      pillsTab.innerHTML = '';
+      pillsTabContent.innerHTML = '';
+      roomOptionSelect.innerHTML = '<option value="" selected disabled>Select a Room Option</option>';
+
+      selectedHotel.rooms.forEach((room, index) => {
+        const roomNameSanitized = sanitizeName(room['Hotel rooms options']);
+        const isActive = index === 0;
+
+        // Create tab
+        const li = document.createElement('li');
+        li.className = 'nav-item';
+        li.setAttribute('role', 'presentation');
+        li.innerHTML = `<button class="nav-link ${isActive ? 'active' : ''}" id="pills-${roomNameSanitized}-tab" data-bs-toggle="pill" data-bs-target="#pills-${roomNameSanitized}" type="button" role="tab" aria-controls="pills-${roomNameSanitized}" aria-selected="${isActive}">${room['Hotel rooms options']}</button>`;
+        pillsTab.appendChild(li);
+
+        // Create tab content
+        const div = document.createElement('div');
+        div.className = `tab-pane fade ${isActive ? 'show active' : ''}`;
+        div.id = `pills-${roomNameSanitized}`;
+        div.setAttribute('role', 'tabpanel');
+        div.setAttribute('aria-labelledby', `pills-${roomNameSanitized}-tab`);
+        div.innerHTML = `
+          <h3 class="h4">${room['Hotel rooms options']}</h3>
+          <p>${room['Short Description']}</p>
+          <p>${room['Long Description']}</p>
+          <ul class="list-unstyled">
+              <li><strong>Group Price (per night):</strong> ₹${room['Group Price (per night)']}</li>
+              <li><strong>Max people at group price:</strong> ${room['Max people paying group price']}</li>
+              <li><strong>Extra charges per person:</strong> ₹${room['Extra charges for extra people']}</li>
+              <li><strong>Max Occupancy:</strong> ${room['Max Occupancy ']}</li>
+              <li><strong>Max Adults:</strong> ${room['Max Adults']}</li>
+              <li><strong>Max Children:</strong> ${room['Max Children']}</li>
+          </ul>
+        `;
+        pillsTabContent.appendChild(div);
+
+        // Populate booking form dropdown
+        const option = document.createElement('option');
+        option.value = roomNameSanitized;
+        option.textContent = room['Hotel rooms options'];
+        roomOptionSelect.appendChild(option);
+      });
+
+      // ----------------------------------------------------------------------
+      // 3. Booking Form Logic
+      // ----------------------------------------------------------------------
+      const roomOptionInput = document.getElementById('room-option');
       const checkInDateInput = document.getElementById('check-in-date');
       const checkOutDateInput = document.getElementById('check-out-date');
       const adultsCountInput = document.getElementById('adults-count');
       const childrenCountInput = document.getElementById('children-count');
-      const roomTabsList = document.getElementById('pills-tab');
-      const roomTabContent = document.getElementById('pills-tabContent');
+      const priceDisplay = document.getElementById('price-display');
+      const totalPriceSpan = document.getElementById('total-price');
 
-      let selectedHotel = null;
-      let selectedRoomData = null;
+      // Initialize Flatpickr datepickers
+      flatpickr(checkInDateInput, { dateFormat: "Y-m-d", minDate: "today" });
+      flatpickr(checkOutDateInput, { dateFormat: "Y-m-d", minDate: "today" });
 
-      // Fetch the JSON data from the provided URL
-      fetch('hotels.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-          }
-          return response.json();
-        })
-        .then(data => {
-          // Find the hotel that matches the ID from the URL, using the new `sanitizeName` function
-          selectedHotel = data.find(hotel => {
-              const sanitizedMainHotelName = sanitizeName(hotel['Main Hotel']);
-              return `${sanitizedMainHotelName}-main` === hotelIdFromUrl;
-          });
-
-          if (selectedHotel) {
-            // Update the page with the hotel details
-            pageTitleElement.textContent = selectedHotel['Main Hotel'];
-            hotelNameBreadcrumb.textContent = selectedHotel['Main Hotel'];
-            hotelNameElement.textContent = selectedHotel['Main Hotel'];
-            hotelAddressElement.textContent = selectedHotel['Address Line (Street, Landmark, Village, )'];
-
-            // Populate amenities from the JSON, keeping the original styling and icons
-            const amenitiesText = selectedHotel['Amenities (same for all hotels)'];
-            const amenitiesHtml = amenitiesText.split('\n').filter(line => line.trim().length > 0).map(line => {
-                if (line.trim().startsWith('🛏️') || line.trim().startsWith('🍽️') || line.trim().startsWith('🏕️')) {
-                    // This is a section header, style it accordingly
-                    return `<br><strong>${line.trim()}</strong>`;
-                } else if (line.trim().startsWith('•')) {
-                    // This is a list item under a header
-                    return `<li>${line.trim().substring(1).trim()}</li>`;
-                }
-                // Handle any other cases or simply return the line in a list item
-                return `<li>${line.trim()}</li>`;
-            }).join('');
-            amenitiesListElement.innerHTML = `<ul>${amenitiesHtml}</ul>`;
-
-            // Clear the original placeholder rooms
-            roomOptionsSelect.innerHTML = '<option value="" selected disabled>Select a Room Option</option>';
-            roomTabsList.innerHTML = '';
-            roomTabContent.innerHTML = '';
-
-            // Populate room options in the booking form dropdown and create room tabs and content
-            selectedHotel.rooms.forEach((room, index) => {
-              // Populate the select dropdown
-              const option = document.createElement('option');
-              option.value = room['Hotel rooms options'];
-              option.textContent = room['Hotel rooms options'];
-              roomOptionsSelect.appendChild(option);
-
-              // Create tab button
-              const isActive = index === 0;
-              const roomTabId = sanitizeName(room['Hotel rooms options']);
-              const tabItem = document.createElement('li');
-              tabItem.classList.add('nav-item');
-              tabItem.setAttribute('role', 'presentation');
-              tabItem.innerHTML = `<button class="nav-link ${isActive ? 'active' : ''}" id="pills-${roomTabId}-tab" data-bs-toggle="pill" data-bs-target="#pills-${roomTabId}" type="button" role="tab" aria-controls="pills-${roomTabId}" aria-selected="${isActive}"><h5>${room['Hotel rooms options']}</h5></button>`;
-              roomTabsList.appendChild(tabItem);
-
-              // Create tab content
-              const tabContentDiv = document.createElement('div');
-              tabContentDiv.classList.add('tab-pane', 'fade', 'p-4', 'rounded', 'border', `${isActive ? 'show active' : ''}`);
-              tabContentDiv.id = `pills-${roomTabId}`;
-              tabContentDiv.setAttribute('role', 'tabpanel');
-              tabContentDiv.setAttribute('aria-labelledby', `pills-${roomTabId}-tab`);
-
-              tabContentDiv.innerHTML = `
-                <div class="row">
-                    <div class="col-lg-8">
-                        <h4>${room['Short Description']}</h4>
-                        <p>${room['Long Description']}</p>
-                    </div>
-                    <div class="col-lg-4 d-flex align-items-center">
-                        <ul class="list-unstyled">
-                            <li><strong>Group Price (per night):</strong> ₹${room['Group Price (per night)']}/-</li>
-                            <li><strong>Max people paying group price:</strong> ${room['Max people paying group price']}</li>
-                            <li><strong>Extra charges per extra person:</strong> ₹${room['Extra charges for extra people']}/-</li>
-                            <li><strong>Max Occupancy:</strong> ${room['Max Occupancy ']}</li>
-                            <li><strong>Max Adults:</strong> ${room['Max Adults']}</li>
-                            <li><strong>Max Children:</strong> ${room['Max Children']}</li>
-                        </ul>
-                    </div>
-                </div>
-              `;
-              roomTabContent.appendChild(tabContentDiv);
-
-              // Set the initial short and long descriptions from the first room
-              if (index === 0) {
-                hotelShortDescriptionElement.textContent = room['Short Description'];
-                hotelLongDescriptionPage.textContent = room['Long Description'];
-                selectedRoomData = room;
-              }
-            });
-
-          } else {
-            // Handle the case where the hotel is not found
-            pageTitleElement.textContent = 'Hotel Not Found';
-            hotelNameBreadcrumb.textContent = 'Not Found';
-            hotelNameElement.textContent = 'Hotel Not Found';
-            hotelLongDescriptionPage.textContent = 'The hotel you are looking for does not exist. Please check the URL.';
-
-            // Hide the dynamic content sections if no hotel is found
-            bookingForm.style.display = 'none';
-            roomTabsList.style.display = 'none';
-          }
-        })
-        .catch(error => console.error('Error fetching data:', error));
-
-      // Function to calculate total price
       function calculatePrice() {
-        const selectedRoomName = roomOptionsSelect.value;
-        const adults = parseInt(adultsCountInput.value, 10);
-        const children = parseInt(childrenCountInput.value, 10);
-        const checkIn = new Date(checkInDateInput.value);
-        const checkOut = new Date(checkOutDateInput.value);
+        const roomNameSanitized = roomOptionInput.value;
+        const checkIn = checkInDateInput.value;
+        const checkOut = checkOutDateInput.value;
+        const adults = parseInt(adultsCountInput.value) || 0;
+        const children = parseInt(childrenCountInput.value) || 0;
 
-        if (!selectedRoomName || isNaN(adults) || isNaN(children) || !checkIn || !checkOut || checkIn >= checkOut) {
-          priceDisplayElement.style.display = 'none';
+        if (!roomNameSanitized || !checkIn || !checkOut || adults < 1) {
+          priceDisplay.style.display = 'none';
           return;
         }
 
-        const room = selectedHotel.rooms.find(r => r['Hotel rooms options'] === selectedRoomName);
-        selectedRoomData = room;
-
-        if (room) {
-          const totalPeople = adults + children;
-          const groupPrice = parseFloat(room['Group Price (per night)']);
-          const maxGroupPeople = parseInt(room['Max people paying group price'], 10);
-          const extraChargesPerPerson = parseFloat(room['Extra charges for extra people']);
-
-          let extraPeople = 0;
-          if (totalPeople > maxGroupPeople) {
-            extraPeople = totalPeople - maxGroupPeople;
-          }
-
-          const timeDiff = Math.abs(checkOut.getTime() - checkIn.getTime());
-          const numNights = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-          if (isNaN(numNights) || numNights <= 0) {
-            priceDisplayElement.style.display = 'none';
-            return;
-          }
-
-          const roomPricePerNight = groupPrice + (extraPeople * extraChargesPerPerson);
-          const totalPrice = roomPricePerNight * numNights;
-
-          totalPriceElement.textContent = `₹${totalPrice.toFixed(2)}`;
-          priceDisplayElement.style.display = 'block';
+        const room = selectedHotel.rooms.find(r => sanitizeName(r['Hotel rooms options']) === roomNameSanitized);
+        if (!room) {
+          priceDisplay.style.display = 'none';
+          return;
         }
+
+        // Calculate number of nights
+        const checkInDate = new Date(checkIn);
+        const checkOutDate = new Date(checkOut);
+        const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
+        const numberOfNights = timeDiff / (1000 * 3600 * 24);
+
+        if (numberOfNights <= 0 || isNaN(numberOfNights)) {
+          priceDisplay.style.display = 'none';
+          return;
+        }
+
+        let extraPeople = 0;
+        const totalGuests = adults + children;
+        if (totalGuests > room['Max people paying group price']) {
+          extraPeople = totalGuests - room['Max people paying group price'];
+        }
+
+        const groupPrice = room['Group Price (per night)'];
+        const extraCharges = room['Extra charges for extra people'];
+
+        const totalPrice = (groupPrice + (extraPeople * extraCharges)) * numberOfNights;
+        totalPriceSpan.textContent = `₹${totalPrice.toLocaleString()}`;
+        priceDisplay.style.display = 'block';
       }
 
-      // Update the short description when a new room option is selected from the dropdown
-      roomOptionsSelect.addEventListener('change', () => {
-        const selectedRoomName = roomOptionsSelect.value;
-        const room = selectedHotel.rooms.find(r => r['Hotel rooms options'] === selectedRoomName);
-        if (room) {
-          hotelShortDescriptionElement.textContent = room['Short Description'];
-          hotelLongDescriptionPage.textContent = room['Long Description'];
-        }
-        calculatePrice();
-      });
+      // Add event listeners to trigger price calculation
+      const formInputs = [roomOptionInput, checkInDateInput, checkOutDateInput, adultsCountInput, childrenCountInput];
+      formInputs.forEach(input => input.addEventListener('change', calculatePrice));
 
-      // Add event listeners for form inputs to trigger price calculation
-      checkInDateInput.addEventListener('change', calculatePrice);
-      checkOutDateInput.addEventListener('change', calculatePrice);
-      adultsCountInput.addEventListener('input', calculatePrice);
-      childrenCountInput.addEventListener('input', calculatePrice);
-
-      // Simple datepicker functionality
-      flatpickr("#check-in-date", {
-          dateFormat: "Y-m-d",
-          minDate: "today"
-      });
-      flatpickr("#check-out-date", {
-          dateFormat: "Y-m-d",
-          minDate: "today"
-      });
+      // Initialize price calculation on page load if data is pre-filled
+      calculatePrice();
 
       // Event listener for the booking form submission
-      bookingForm.addEventListener('submit', function(event) {
+      document.getElementById('booking-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        // Here you would handle form submission, e.g., send data to a server
         const sentMessage = this.querySelector('.sent-message');
         sentMessage.style.display = 'block';
         setTimeout(() => {
@@ -508,9 +529,6 @@
       });
     });
   </script>
-  <!-- Link to Flatpickr for date pickers -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </body>
 </html>
