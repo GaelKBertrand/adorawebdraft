@@ -404,12 +404,12 @@
 
       // Determine capacity display
       let capacityIcon = 'bi bi-people'; // Default icon for multiple guests
-      let capacityText = `${room.maxOccupancy} Guests`;
+      let capacityText = `Max: ${room.maxOccupancy} Guests`;
       if (room.maxOccupancy === 1) {
           capacityIcon = 'bi bi-person';
           capacityText = '1 Guest';
       } else if (room.maxOccupancy > 1) {
-          capacityText = `${room.maxOccupancy} Guests`;
+          capacityText = `Max: ${room.maxOccupancy} Guests`;
       }
       const capacityHTML = `<span><i class="${capacityIcon}"></i> ${capacityText}</span>`;
 
