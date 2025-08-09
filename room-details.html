@@ -4,17 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title id="page-title">Room Details - LuxuryHotel Bootstrap Template</title>
+  <title id="page-title">Room Details</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
+  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -22,11 +25,13 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
 
+  <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
 <body class="room-details-page">
 
+  <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
@@ -36,9 +41,9 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="rooms.html">View Hotels & Stays</a></li>
+          <li><a href="rooms.html" class="active">View Hotels & Stays</a></li>
           <li><a href="gallery.html">Look Inside</a></li>
           <li><a href="https://trek.adorahospitality.com">Treks & Road Trips</a></li>
           <li><a href="https://trek.adorahospitality.com">Updates</a></li>
@@ -51,10 +56,12 @@
 
     </div>
   </header>
+  <!-- End Header -->
 
   <main class="main">
 
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/hotel/showcase-7.webp);">
+    <!-- Page Title Section -->
+    <div class="page-title dark-background" data-aos="fade">
       <div class="container position-relative">
         <h1 id="hotel-name-page-title">Hotel Name</h1>
         <p id="hotel-address">Hotel Address will be here</p>
@@ -65,13 +72,16 @@
           </ol>
         </nav>
       </div>
-    </div><section id="room-details" class="room-details section">
+    </div>
+    <!-- End Page Title Section -->
 
+    <!-- Room Details Section -->
+    <section id="room-details" class="room-details section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row">
           <div class="col-lg-8">
             <div class="room-gallery">
+              <!-- Main Image Section -->
               <div class="main-image-container image-zoom-container">
                 <img id="main-product-image" src="" alt="Hotel Main Image" class="img-fluid main-room-image" data-zoom="">
                 <div class="image-nav-buttons">
@@ -83,10 +93,13 @@
                   </button>
                 </div>
               </div>
+              <!-- Thumbnail Gallery -->
               <div class="thumbnail-gallery thumbnail-list">
-                </div>
+              </div>
             </div>
-          </div><div class="col-lg-4">
+          </div>
+          <!-- Sidebar Section -->
+          <div class="col-lg-4">
             <div class="room-details-sidebar" data-aos="fade-left" data-aos-delay="200">
               <div class="room-header">
                 <h2 id="hotel-name-sidebar">Hotel Name</h2>
@@ -103,7 +116,7 @@
               <div class="room-selection-box mt-3 mb-4 p-3 border rounded shadow-sm bg-white">
                 <h5 class="mb-3">Available Rooms</h5>
                 <ul id="rooms-list" class="list-unstyled p-0 m-0 d-flex flex-column gap-2">
-                  </ul>
+                </ul>
               </div>
               <div id="contact-info" class="mt-4">
                 <h4>Contact Info</h4>
@@ -111,116 +124,92 @@
                 <p><i class="bi bi-envelope me-2"></i> <span id="hotel-email"></span></p>
                 <p><i class="bi bi-geo-alt me-2"></i> <span id="hotel-address-full"></span></p>
               </div>
-
             </div>
-          </div></div>
+          </div>
+        </div>
 
         <div class="row mt-5">
           <div class="col-12">
             <div class="room-info-tabs" data-aos="fade-up" data-aos-delay="300">
               <ul class="nav nav-tabs" id="roomTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#room-details-overview" type="button" role="tab">Overview</button>
+                  <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#room-details-overview" type="button" role="tab" aria-selected="true">Overview</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="amenities-tab" data-bs-toggle="tab" data-bs-target="#room-details-amenities" type="button" role="tab">Amenities</button>
+                  <button class="nav-link" id="amenities-tab" data-bs-toggle="tab" data-bs-target="#room-details-amenities" type="button" role="tab" aria-selected="false">Amenities</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="policies-tab" data-bs-toggle="tab" data-bs-target="#room-details-policies" type="button" role="tab">Policies</button>
+                  <button class="nav-link" id="policies-tab" data-bs-toggle="tab" data-bs-target="#room-details-policies" type="button" role="tab" aria-selected="false">Policies</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#room-details-reviews" type="button" role="tab">Reviews</button>
+                  <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#room-details-reviews" type="button" role="tab" aria-selected="false">Reviews</button>
                 </li>
               </ul>
-
               <div class="tab-content mt-4" id="roomTabsContent">
+                <!-- Overview Tab Content -->
                 <div class="tab-pane fade show active" id="room-details-overview" role="tabpanel">
                   <div class="row">
-                    <div class="col-lg-8">
-                      <h3>Hotel Description</h3>
-                      <p class="room-description" id="hotel-description">
-                        This section will be populated with the hotel's long description.
-                      </p>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="room-stats">
-                        <h4>Quick Stats</h4>
-                        <div class="stat-item">
-                          <span class="stat-label">Check-in:</span>
-                          <span class="stat-value" id="checkin-time"></span>
-                        </div>
-                        <div class="stat-item">
-                          <span class="stat-label">Check-out:</span>
-                          <span class="stat-value" id="checkout-time"></span>
-                        </div>
-                        <div class="stat-item">
-                          <span class="stat-label">Phone:</span>
-                          <span class="stat-value" id="quick-stats-phone"></span>
-                        </div>
-                        <div class="stat-item">
-                          <span class="stat-label">Email:</span>
-                          <span class="stat-value" id="quick-stats-email"></span>
-                        </div>
-                      </div>
+                    <div class="col-lg-12">
+                      <h3 id="hotel-description-heading"></h3>
+                      <p id="hotel-description-long"></p>
                     </div>
                   </div>
                 </div>
-
+                <!-- Amenities Tab Content -->
                 <div class="tab-pane fade" id="room-details-amenities" role="tabpanel">
-                  <div class="amenities-section">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <h4>Property Amenities</h4>
-                        <ul id="hotel-amenities-list" class="amenities-list">
-                          </ul>
-                      </div>
-                    </div>
-                  </div>
+                  <div id="amenities-list"></div>
                 </div>
-
+                <!-- Policies Tab Content -->
                 <div class="tab-pane fade" id="room-details-policies" role="tabpanel">
-                  <div class="policies-section">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="policy-group">
-                          <h4>Refund Policies</h4>
-                          <p id="refund-policies"></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div id="refund-policies"></div>
                 </div>
-
+                <!-- Reviews Tab Content -->
                 <div class="tab-pane fade" id="room-details-reviews" role="tabpanel">
-                  <div class="reviews-section">
-                    <p>Reviews will be added here dynamically if available.</p>
-                  </div>
+                  <p>Reviews will be loaded here.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+    </section>
+    <!-- End Room Details Section -->
 
-    </section></main><a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  </main>
 
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container copyright text-center mt-4">
+      <p>&copy; <span>Copyright</span> <strong class="px-1">LuxuryHotel</strong> <span>All Rights Reserved</span></p>
+    </div>
+
+  </footer>
+  <!-- End Footer -->
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
 
+  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the hotel ID from the URL
       const urlParams = new URLSearchParams(window.location.search);
       const hotelId = urlParams.get('id');
 
       if (hotelId) {
+        // Fetch the JSON data
         fetch('hotels.json')
           .then(response => {
             if (!response.ok) {
@@ -228,85 +217,101 @@
             }
             return response.json();
           })
-          .then(hotelsData => {
-            const hotel = hotelsData.find(h => h.hotel_id === hotelId);
-            if (hotel) {
-              // Update Page Title and Sidebar with Hotel Name and Address
-              document.getElementById('page-title').textContent = `${hotel['Main Hotel']} Details`;
-              document.getElementById('hotel-name-page-title').textContent = hotel['Main Hotel'];
-              document.getElementById('hotel-name-sidebar').textContent = hotel['Main Hotel'];
-              document.getElementById('hotel-address').textContent = hotel['Address Line (Street, Landmark, Village, )'];
+          .then(hotels => {
+            // Find the hotel with the matching ID
+            const hotel = hotels.find(h => h['Main hotel ID'] === hotelId);
 
-              // Update Contact Info
+            if (hotel) {
+              // Update all the dynamic content
+              document.getElementById('page-title').textContent = hotel['Main Hotel'] + " - Room Details";
+              document.getElementById('hotel-name-page-title').textContent = hotel['Main Hotel'];
+              document.getElementById('hotel-address').textContent = hotel['Address Line (Street, Landmark, Village, )'];
+              document.getElementById('hotel-name-sidebar').textContent = hotel['Main Hotel'];
               document.getElementById('hotel-phone').textContent = hotel['Phone'];
               document.getElementById('hotel-email').textContent = hotel['Email'];
               document.getElementById('hotel-address-full').textContent = hotel['Address Line (Street, Landmark, Village, )'];
 
-              // Update Quick Stats in Overview. Using the first room's check-in/out times as a default
-              const firstRoom = hotel.rooms[0];
-              if (firstRoom) {
-                  document.getElementById('checkin-time').textContent = firstRoom['Check-in Time'];
-                  document.getElementById('checkout-time').textContent = firstRoom['Check-out Time'];
-              }
-              document.getElementById('quick-stats-phone').textContent = hotel['Phone'];
-              document.getElementById('quick-stats-email').textContent = hotel['Email'];
+              // Update overview description
+              document.getElementById('hotel-description-heading').textContent = hotel['Main Hotel description'];
+              // Assuming there's a longer description available in the JSON for the overview tab.
+              // If not, we can use the main description. For now, let's use the main description.
+              document.getElementById('hotel-description-long').textContent = hotel['Main Hotel description'];
 
+              // Update amenities
+              const amenitiesList = document.getElementById('amenities-list');
+              // Split the amenities string by newline and create list items
+              const amenities = hotel['Amenities (same for all hotels)'].split('\n').filter(item => item.trim() !== '');
+              amenities.forEach(item => {
+                const p = document.createElement('p');
+                p.textContent = item;
+                amenitiesList.appendChild(p);
+              });
 
-              // Update Image Gallery
+              // Update refund policies
+              const refundPolicies = document.getElementById('refund-policies');
+              refundPolicies.textContent = hotel['Refund Policies'] || "No specific refund policy available.";
+
+              // Update image gallery and thumbnails
               const mainImage = document.getElementById('main-product-image');
-              const thumbnailGallery = document.querySelector('.thumbnail-gallery.thumbnail-list');
-              thumbnailGallery.innerHTML = ''; // Clear existing thumbnails
+              const thumbnailGallery = document.querySelector('.thumbnail-gallery');
+              const hotelImages = hotel['images'];
 
-              hotel.images.forEach((image, index) => {
-                // Set main image and zoom link
-                if (index === 0) {
-                  mainImage.src = image;
-                  mainImage.setAttribute('data-zoom', image);
+              if (hotelImages && hotelImages.length > 0) {
+                mainImage.src = hotelImages[0];
+                mainImage.setAttribute('data-zoom', hotelImages[0]);
+
+                // Clear existing thumbnails
+                thumbnailGallery.innerHTML = '';
+
+                hotelImages.forEach((image, index) => {
+                  const thumbnail = document.createElement('div');
+                  thumbnail.className = 'thumbnail-item';
+                  thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" class="img-fluid ${index === 0 ? 'active' : ''}">`;
+                  thumbnailGallery.appendChild(thumbnail);
+
+                  thumbnail.addEventListener('click', function() {
+                    document.querySelector('.thumbnail-item img.active').classList.remove('active');
+                    this.querySelector('img').classList.add('active');
+                    mainImage.src = image;
+                    mainImage.setAttribute('data-zoom', image);
+                  });
+                });
+
+                // Image navigation buttons
+                const prevBtn = document.querySelector('.prev-image');
+                const nextBtn = document.querySelector('.next-image');
+                let currentImageIndex = 0;
+
+                prevBtn.addEventListener('click', () => {
+                  currentImageIndex = (currentImageIndex - 1 + hotelImages.length) % hotelImages.length;
+                  updateImage(currentImageIndex);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                  currentImageIndex = (currentImageIndex + 1) % hotelImages.length;
+                  updateImage(currentImageIndex);
+                });
+
+                function updateImage(index) {
+                  mainImage.src = hotelImages[index];
+                  mainImage.setAttribute('data-zoom', hotelImages[index]);
+                  document.querySelector('.thumbnail-item img.active').classList.remove('active');
+                  document.querySelectorAll('.thumbnail-item img')[index].classList.add('active');
                 }
+              }
 
-                // Create thumbnail
-                const thumbnailItem = document.createElement('div');
-                thumbnailItem.classList.add('thumbnail-item');
-                if (index === 0) {
-                  thumbnailItem.classList.add('active');
-                }
-                thumbnailItem.setAttribute('data-image', image);
-                thumbnailItem.innerHTML = `<img src="${image}" alt="${hotel['Main Hotel']} Photo" class="img-fluid">`;
-                thumbnailGallery.appendChild(thumbnailItem);
-              });
-
-              // Update Hotel Description
-              document.getElementById('hotel-description').textContent = hotel.rooms[0]['Long Description'] || hotel.rooms[0]['Short Description'];
-
-              // Update Amenities
-              const amenitiesList = document.getElementById('hotel-amenities-list');
-              amenitiesList.innerHTML = '';
-              const amenities = hotel['Amenities (same for all hotels)'].split('\n').filter(item => item.trim() !== '' && !item.includes('🛏️') && !item.includes('🏕️'));
-              amenities.forEach(amenity => {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `<i class="bi bi-check-circle-fill"></i> ${amenity.trim()}`;
-                amenitiesList.appendChild(listItem);
-              });
-
-              // Update Refund Policies
-              document.getElementById('refund-policies').textContent = hotel['Refund Policies'];
-
-              // Update Available Rooms section
+              // Update the list of available rooms
               const roomsList = document.getElementById('rooms-list');
               roomsList.innerHTML = ''; // Clear existing rooms
               hotel.rooms.forEach((room, index) => {
-                  const roomItem = document.createElement('li');
-                  roomItem.classList.add('stat-item');
-                  if (index === 0) {
-                      roomItem.classList.add('active');
-                  }
-                  roomItem.innerHTML = `
-                      <a href="#" class="btn ${index === 0 ? 'btn-primary' : 'btn-outline-primary'} d-flex w-100 p-2 rounded justify-content-between align-items-center">
-                          <span class="stat-label">${room['Hotel rooms options']}</span>
-                          <span class="stat-value">Available</span>
-                      </a>
-                  `;
-                  roomsList.appendChild(roomItem);
+                const roomItem = document.createElement('li');
+                roomItem.innerHTML = `
+                    <a href="#" class="btn ${index === 0 ? 'btn-primary' : 'btn-outline-primary'} d-flex w-100 p-2 rounded justify-content-between align-items-center">
+                        <span class="stat-label">${room['Hotel rooms options']}</span>
+                        <span class="stat-value">Available</span>
+                    </a>
+                `;
+                roomsList.appendChild(roomItem);
               });
             } else {
               console.error('Hotel not found with ID:', hotelId);
@@ -314,6 +319,7 @@
               document.getElementById('hotel-name-page-title').textContent = 'Hotel Not Found';
               document.getElementById('hotel-name-sidebar').textContent = 'Hotel Not Found';
               document.getElementById('hotel-address').textContent = 'Please check the URL.';
+              document.getElementById('hotel-address-full').textContent = 'Please check the URL.';
             }
           })
           .catch(error => {
@@ -322,10 +328,24 @@
             document.getElementById('hotel-name-page-title').textContent = 'Error Loading Data';
             document.getElementById('hotel-name-sidebar').textContent = 'Error Loading Data';
             document.getElementById('hotel-address').textContent = 'Could not load hotel data. Please check the file path.';
+            document.getElementById('hotel-address-full').textContent = 'Could not load hotel data. Please check the file path.';
           });
       }
     });
   </script>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>
