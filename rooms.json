@@ -25,7 +25,7 @@
     "bhk": null,
     "description": "Juniper House offers a range of cozy to spacious units, ideal for a tranquil getaway amidst valley and mountain landscapes.",
     "image": "assets/img/hotel/junipercover.jpg",
-    "badge": "Tranquil and Spacious Retreat",
+    "badge": "Tranquil Retreat",
     "view": "valley",
     "features": ["wifi", "kitchen"]
   },
@@ -40,7 +40,7 @@
     "bhk": null,
     "description": "A collection of art-inspired homes, offering comfortable and budget-friendly units, perfect for solo travelers or couples exploring the city.",
     "image": "assets/img/hotel/starwaycover.jpg",
-    "badge": "Universe Inspired Artistic Stay",
+    "badge": "Artistic Stay",
     "view": "city",
     "features": ["wifi"]
   },
