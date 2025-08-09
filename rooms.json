@@ -12,7 +12,7 @@
     "image": "assets/img/hotel/swisscover.jpg",
     "badge": "Luxury Experience",
     "view": ["mountain", "garden", "valley"]
-    "features": ["wifi", "balcony", "kitchen", "spa"]
+    "features": ["wifi", "balcony", "kitchen", "barbecue"]
   },
   {
     "id": "juniper-house-main",
