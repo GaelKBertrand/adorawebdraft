@@ -11,8 +11,8 @@
     "description": "Experience luxury and comfort in our spacious 5-bedroom Swiss Cottage, perfect for large families or groups looking for a retreat in the heart of nature.",
     "image": "assets/img/hotel/swisscover.jpg",
     "badge": "Luxury Experience",
-    "view": ["mountain", "garden", "valley"],
-    "features": ["wifi", "balcony", "kitchen", "barbecue"]
+    "view": "mountain",
+    "features": ["wifi", "balcony", "kitchen", "barbecue", "parking"]
   },
   {
     "id": "juniper-house-main",
@@ -27,7 +27,7 @@
     "image": "assets/img/hotel/junipercover.jpg",
     "badge": "Tranquil Retreat",
     "view": "valley",
-    "features": ["wifi", "kitchen"]
+    "features": ["wifi", "balcony", "kitchen", "barbecue", "parking"]
   },
   {
     "id": "starway-homes-main",
@@ -41,8 +41,8 @@
     "description": "A collection of art-inspired homes, offering comfortable and budget-friendly units, perfect for solo travelers or couples exploring the city.",
     "image": "assets/img/hotel/starwaycover.jpg",
     "badge": "Artistic Stay",
-    "view": "city",
-    "features": ["wifi"]
+    "view": "mountain",
+    "features": ["wifi", "balcony", "kitchen", "barbecue", "parking"]
   },
   {
     "id": "amaira-hotel-main",
@@ -57,6 +57,6 @@
     "image": "assets/img/hotel/amairacover.jpg",
     "badge": "Farmhouse Experience",
     "view": "mountain",
-    "features": ["wifi", "kitchen", "balcony"]
+    "features": ["wifi", "balcony", "kitchen", "barbecue", "parking"]
   }
 ]
