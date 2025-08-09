@@ -4,30 +4,24 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Room Details - Adora Hospitality</title>
+  <title>Room Details - LuxuryHotel Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-
-  <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
@@ -60,31 +54,26 @@
 
   <main class="main">
 
-    <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/hotel/showcase-7.webp);">
       <div class="container position-relative">
-        <h1 id="page-title">Room Details</h1>
-        <p id="hotel-long-description-page">Check Property and Room Details To Make Your Best Choice</p>
+        <h1 id="hotel-name-page-title">Hotel Name</h1>
+        <p id="hotel-address">Hotel Address will be here</p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current" id="hotel-name-breadcrumb">Room Details</li>
+            <li class="current">Room Details</li>
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
-
-    <!-- Room Details Section -->
-    <section id="room-details" class="room-details section">
+    </div><section id="room-details" class="room-details section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row" id="main-content">
-          <!-- Room Gallery -->
+        <div class="row">
           <div class="col-lg-8">
             <div class="room-gallery">
               <div class="main-image-container image-zoom-container">
-                <img id="main-product-image" src="assets/img/hotel/room-1.webp" alt="Presidential Suite" class="img-fluid main-room-image" data-zoom="assets/img/hotel/room-1.webp">
+                <img id="main-product-image" src="" alt="Hotel Main Image" class="img-fluid main-room-image" data-zoom="">
                 <div class="image-nav-buttons">
                   <button class="image-nav-btn prev-image" type="button">
                     <i class="bi bi-chevron-left"></i>
@@ -95,30 +84,12 @@
                 </div>
               </div>
               <div class="thumbnail-gallery thumbnail-list">
-                <div class="thumbnail-item active" data-image="assets/img/hotel/room-1.webp">
-                  <img src="assets/img/hotel/room-1.webp" alt="Presidential Suite" class="img-fluid">
                 </div>
-                <div class="thumbnail-item" data-image="assets/img/hotel/room-3.webp">
-                  <img src="assets/img/hotel/room-3.webp" alt="Bedroom View" class="img-fluid">
-                </div>
-                <div class="thumbnail-item" data-image="assets/img/hotel/room-7.webp">
-                  <img src="assets/img/hotel/room-7.webp" alt="Bathroom" class="img-fluid">
-                </div>
-                <div class="thumbnail-item" data-image="assets/img/hotel/room-12.webp">
-                  <img src="assets/img/hotel/room-12.webp" alt="City View" class="img-fluid">
-                </div>
-                <div class="thumbnail-item" data-image="assets/img/hotel/room-15.webp">
-                  <img src="assets/img/hotel/room-15.webp" alt="Living Area" class="img-fluid">
-                </div>
-              </div>
             </div>
-          </div><!-- End Room Gallery -->
-
-          <!-- Room Details Sidebar -->
-          <div class="col-lg-4">
+          </div><div class="col-lg-4">
             <div class="room-details-sidebar" data-aos="fade-left" data-aos-delay="200">
               <div class="room-header">
-                <h2 id="hotel-name">Property & Room Details</h2>
+                <h2 id="hotel-name-sidebar">Hotel Name</h2>
                 <div class="room-rating">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -126,74 +97,23 @@
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <span class="rating-text">(4.9)</span>
-                  <!-- I've removed the static rating text here to be consistent with the design and the fact that we don't have review data yet -->
-                </div>
-                <div class="room-meta">
-                    <span id="hotel-address"></span>
                 </div>
               </div>
 
-              <!-- Booking Form -->
-              <div class="booking-form mt-4">
-                <h3 class="h5">Book this room</h3>
-                <form action="#" id="booking-form" class="php-email-form">
-                  <div class="row gy-3">
-                    <div class="col-12">
-                      <select name="room-option" id="room-option" class="form-select">
-                        <option value="" selected disabled>Select a Room Option</option>
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" name="check-in" class="form-control" id="check-in-date" placeholder="Check-in Date" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="check-out" id="check-out-date" placeholder="Check-out Date" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="number" name="adults" class="form-control" id="adults-count" placeholder="Adults" min="1" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="number" class="form-control" name="children" id="children-count" placeholder="Children" min="0" required>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="alert alert-info" id="price-display" style="display: none;">
-                        <strong>Total Price:</strong> <span id="total-price">0</span>
-                      </div>
-                    </div>
-                    <div class="col-12 text-center">
-                      <div class="loading">Loading</div>
-                      <div class="error-message"></div>
-                      <div class="sent-message">Your booking request has been sent. Thank you!</div>
-                      <button type="submit">Book Now</button>
-                    </div>
-                  </div>
-                </form>
-              </div><!-- End Booking Form -->
-            </div>
-          </div><!-- End Room Details Sidebar -->
-        </div>
+              <div class="room-selection-box mt-3 mb-4 p-3 border rounded shadow-sm bg-white">
+                <h5 class="mb-3">Available Rooms</h5>
+                <ul id="rooms-list" class="list-unstyled p-0 m-0 d-flex flex-column gap-2">
+                  </ul>
+              </div>
+              <div id="contact-info" class="mt-4">
+                <h4>Contact Info</h4>
+                <p><i class="bi bi-telephone me-2"></i> <span id="hotel-phone"></span></p>
+                <p><i class="bi bi-envelope me-2"></i> <span id="hotel-email"></span></p>
+                <p><i class="bi bi-geo-alt me-2"></i> <span id="hotel-address-full"></span></p>
+              </div>
 
-        <!-- Room Tabs & Content -->
-        <div class="row mt-5">
-            <div class="col-lg-12">
-                <div class="room-tabs" data-aos="fade-up" data-aos-delay="200">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <!-- Room tabs will be dynamically populated here -->
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <!-- Room tab content will be dynamically populated here -->
-                    </div>
-                </div>
             </div>
-        </div>
+          </div></div>
 
         <div class="row mt-5">
           <div class="col-12">
@@ -217,63 +137,29 @@
                 <div class="tab-pane fade show active" id="room-details-overview" role="tabpanel">
                   <div class="row">
                     <div class="col-lg-8">
-                      <h3>Room Description</h3>
-                      <p class="room-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus cursus bibendum. Pellentesque non nisi enim. Maecenas malesuada lorem vel cursus blandit. Sed tempor, ipsum vel cursus bibendum, nunc nisl aliquam mauris, eget aliquam lacus nunc vel nisl.
+                      <h3>Hotel Description</h3>
+                      <p class="room-description" id="hotel-description">
+                        This section will be populated with the hotel's long description.
                       </p>
-                      <p>
-                        Nunc auctor, nisl eget ultricies tincidunt, nunc nisl aliquam mauris, eget aliquam lacus nunc vel nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus cursus bibendum.
-                      </p>
-
-                      <div class="room-features-grid mt-4">
-                        <div class="feature-item">
-                          <i class="bi bi-people"></i>
-                          <div class="feature-info">
-                            <h5>Max Occupancy</h5>
-                            <p>4 Guests</p>
-                          </div>
-                        </div>
-                        <div class="feature-item">
-                          <i class="bi bi-arrows-fullscreen"></i>
-                          <div class="feature-info">
-                            <h5>Room Size</h5>
-                            <p>85 sqm</p>
-                          </div>
-                        </div>
-                        <div class="feature-item">
-                          <i class="bi bi-moon"></i>
-                          <div class="feature-info">
-                            <h5>Bed Type</h5>
-                            <p>King Bed</p>
-                          </div>
-                        </div>
-                        <div class="feature-item">
-                          <i class="bi bi-eye"></i>
-                          <div class="feature-info">
-                            <h5>View</h5>
-                            <p>City Skyline</p>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="room-stats">
                         <h4>Quick Stats</h4>
                         <div class="stat-item">
-                          <span class="stat-label">Floor Level:</span>
-                          <span class="stat-value">25-30th Floor</span>
-                        </div>
-                        <div class="stat-item">
-                          <span class="stat-label">Balcony:</span>
-                          <span class="stat-value">Private</span>
-                        </div>
-                        <div class="stat-item">
                           <span class="stat-label">Check-in:</span>
-                          <span class="stat-value">3:00 PM</span>
+                          <span class="stat-value" id="checkin-time"></span>
                         </div>
                         <div class="stat-item">
                           <span class="stat-label">Check-out:</span>
-                          <span class="stat-value">11:00 AM</span>
+                          <span class="stat-value" id="checkout-time"></span>
+                        </div>
+                        <div class="stat-item">
+                          <span class="stat-label">Phone:</span>
+                          <span class="stat-value" id="quick-stats-phone"></span>
+                        </div>
+                        <div class="stat-item">
+                          <span class="stat-label">Email:</span>
+                          <span class="stat-value" id="quick-stats-email"></span>
                         </div>
                       </div>
                     </div>
@@ -283,45 +169,10 @@
                 <div class="tab-pane fade" id="room-details-amenities" role="tabpanel">
                   <div class="amenities-section">
                     <div class="row">
-                      <div class="col-md-6">
-                        <h4>Bedroom &amp; Living</h4>
-                        <ul class="amenities-list">
-                          <li><i class="bi bi-check-circle-fill"></i> King-size bed with premium linens</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Separate living area</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Work desk with ergonomic chair</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Walk-in closet</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Blackout curtains</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Air conditioning control</li>
-                        </ul>
-
-                        <h4 class="mt-4">Entertainment</h4>
-                        <ul class="amenities-list">
-                          <li><i class="bi bi-check-circle-fill"></i> 65" Smart TV</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Premium cable channels</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Bluetooth sound system</li>
-                          <li><i class="bi bi-check-circle-fill"></i> High-speed Wi-Fi</li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6">
-                        <h4>Bathroom</h4>
-                        <ul class="amenities-list">
-                          <li><i class="bi bi-check-circle-fill"></i> Marble bathroom</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Deep soaking tub</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Separate rain shower</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Double vanity</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Luxury toiletries</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Heated floors</li>
-                        </ul>
-
-                        <h4 class="mt-4">Services &amp; Extras</h4>
-                        <ul class="amenities-list">
-                          <li><i class="bi bi-check-circle-fill"></i> 24/7 room service</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Daily housekeeping</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Concierge service</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Mini-bar</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Coffee maker</li>
-                          <li><i class="bi bi-check-circle-fill"></i> Safe deposit box</li>
-                        </ul>
+                      <div class="col-md-12">
+                        <h4>Property Amenities</h4>
+                        <ul id="hotel-amenities-list" class="amenities-list">
+                          </ul>
                       </div>
                     </div>
                   </div>
@@ -330,47 +181,10 @@
                 <div class="tab-pane fade" id="room-details-policies" role="tabpanel">
                   <div class="policies-section">
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="policy-group">
-                          <h4>Check-in &amp; Check-out</h4>
-                          <ul class="policy-list">
-                            <li><strong>Check-in:</strong> 3:00 PM - 12:00 AM</li>
-                            <li><strong>Check-out:</strong> 6:00 AM - 11:00 AM</li>
-                            <li><strong>Early check-in:</strong> Subject to availability</li>
-                            <li><strong>Late check-out:</strong> Additional charges may apply</li>
-                          </ul>
-                        </div>
-
-                        <div class="policy-group">
-                          <h4>Cancellation Policy</h4>
-                          <ul class="policy-list">
-                            <li>Free cancellation up to 48 hours before check-in</li>
-                            <li>Cancellations within 48 hours: 1 night charge</li>
-                            <li>No-show: Full charge for entire stay</li>
-                            <li>Peak season: 7-day advance cancellation required</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="policy-group">
-                          <h4>House Rules</h4>
-                          <ul class="policy-list">
-                            <li>No smoking (designated areas available)</li>
-                            <li>Pets allowed with additional fee</li>
-                            <li>Maximum occupancy: 4 guests</li>
-                            <li>Quiet hours: 10:00 PM - 8:00 AM</li>
-                            <li>Valid ID required at check-in</li>
-                          </ul>
-                        </div>
-
-                        <div class="policy-group">
-                          <h4>Payment &amp; Fees</h4>
-                          <ul class="policy-list">
-                            <li>Credit card required for incidentals</li>
-                            <li>City tax: $5 per night (not included)</li>
-                            <li>Resort fee: $25 per night</li>
-                            <li>Parking: $30 per night (valet only)</li>
-                          </ul>
+                          <h4>Refund Policies</h4>
+                          <p id="refund-policies"></p>
                         </div>
                       </div>
                     </div>
@@ -379,118 +193,7 @@
 
                 <div class="tab-pane fade" id="room-details-reviews" role="tabpanel">
                   <div class="reviews-section">
-                    <div class="row">
-                      <div class="col-lg-4">
-                        <div class="review-summary">
-                          <div class="overall-rating">
-                            <span class="rating-number">4.9</span>
-                            <div class="rating-stars">
-                              <i class="bi bi-star-fill"></i>
-                              <i class="bi bi-star-fill"></i>
-                              <i class="bi bi-star-fill"></i>
-                              <i class="bi bi-star-fill"></i>
-                              <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="review-count">Based on 247 reviews</p>
-                          </div>
-
-                          <div class="rating-breakdown">
-                            <div class="rating-item">
-                              <span class="rating-label">Cleanliness</span>
-                              <div class="rating-bar">
-                                <div class="rating-fill" style="width: 95%"></div>
-                              </div>
-                              <span class="rating-value">4.8</span>
-                            </div>
-                            <div class="rating-item">
-                              <span class="rating-label">Comfort</span>
-                              <div class="rating-bar">
-                                <div class="rating-fill" style="width: 98%"></div>
-                              </div>
-                              <span class="rating-value">4.9</span>
-                            </div>
-                            <div class="rating-item">
-                              <span class="rating-label">Service</span>
-                              <div class="rating-bar">
-                                <div class="rating-fill" style="width: 94%"></div>
-                              </div>
-                              <span class="rating-value">4.7</span>
-                            </div>
-                            <div class="rating-item">
-                              <span class="rating-label">Location</span>
-                              <div class="rating-bar">
-                                <div class="rating-fill" style="width: 96%"></div>
-                              </div>
-                              <span class="rating-value">4.8</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-lg-8">
-                        <div class="reviews-list">
-                          <div class="review-item">
-                            <div class="reviewer-info">
-                              <img src="assets/img/person/person-f-3.webp" alt="Sarah M." class="reviewer-avatar">
-                              <div class="reviewer-details">
-                                <h5>Sarah M.</h5>
-                                <div class="review-stars">
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                </div>
-                                <span class="review-date">March 15, 2024</span>
-                              </div>
-                            </div>
-                            <p class="review-text">
-                              "Absolutely stunning suite with breathtaking city views. The marble bathroom was luxurious and the bed incredibly comfortable. Service was impeccable throughout our stay."
-                            </p>
-                          </div>
-
-                          <div class="review-item">
-                            <div class="reviewer-info">
-                              <img src="assets/img/person/person-m-7.webp" alt="Michael R." class="reviewer-avatar">
-                              <div class="reviewer-details">
-                                <h5>Michael R.</h5>
-                                <div class="review-stars">
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                </div>
-                                <span class="review-date">February 28, 2024</span>
-                              </div>
-                            </div>
-                            <p class="review-text">
-                              "Perfect for our anniversary celebration. The suite exceeded our expectations in every way. The private balcony was our favorite feature."
-                            </p>
-                          </div>
-
-                          <div class="review-item">
-                            <div class="reviewer-info">
-                              <img src="assets/img/person/person-f-11.webp" alt="Jessica L." class="reviewer-avatar">
-                              <div class="reviewer-details">
-                                <h5>Jessica L.</h5>
-                                <div class="review-stars">
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star-fill"></i>
-                                  <i class="bi bi-star"></i>
-                                </div>
-                                <span class="review-date">January 12, 2024</span>
-                              </div>
-                            </div>
-                            <p class="review-text">
-                              "Beautiful room with excellent amenities. The only minor issue was the check-in process took longer than expected, but the staff made up for it with exceptional service."
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p>Reviews will be added here dynamically if available.</p>
                   </div>
                 </div>
               </div>
@@ -498,83 +201,10 @@
           </div>
         </div>
 
-        <!-- "Hotel Not Found" message -->
-        <div id="hotel-not-found-message" style="display: none;" class="text-center py-5">
-            <h2 class="display-4">Hotel Not Found</h2>
-            <p class="lead">The hotel you are looking for does not exist.</p>
-            <a href="rooms.html" class="btn btn-primary mt-3">Back to All Hotels</a>
-        </div>
-
       </div>
 
-    </section><!-- /Room Details Section -->
+    </section></main><a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">LuxuryHotel</span>
-          </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum non elit dolor...
-          </p>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="sitename">LuxuryHotel</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -583,235 +213,108 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
 
-  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- Link to Flatpickr for date pickers -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-  <!-- Dynamic Content Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-      // ----------------------------------------------------------------------
-      // 1. Hotel Data Loading
-      // ----------------------------------------------------------------------
-
-      const params = new URLSearchParams(window.location.search);
-      let hotelId = params.get('id');
-      let selectedHotel = null;
-      let hotels = [];
-
-      // Helper function to sanitize hotel names for URL matching
-      function sanitizeName(name) {
-        return name.toLowerCase().replace('-main', '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, '-');
-      }
-
-      // Fetch hotels.json
-      try {
-        const response = await fetch('hotels.json');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        hotels = await response.json();
-      } catch (error) {
-        console.error('Could not load hotels.json:', error);
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const hotelId = urlParams.get('id');
 
       if (hotelId) {
-        hotelId = hotelId.replace('-main', '');
-        selectedHotel = hotels.find(hotel => sanitizeName(hotel['Main Hotel']) === hotelId);
-      }
-
-      const mainContent = document.getElementById('main-content');
-      const hotelNotFoundMessage = document.getElementById('hotel-not-found-message');
-
-      if (!selectedHotel) {
-        // Hide content and show "not found" message
-        if (mainContent) mainContent.style.display = 'none';
-        if (hotelNotFoundMessage) hotelNotFoundMessage.style.display = 'block';
-        return;
-      } else {
-        // Show content if a hotel is found
-        if (mainContent) mainContent.style.display = 'flex';
-        if (hotelNotFoundMessage) hotelNotFoundMessage.style.display = 'none';
-      }
-
-      // ----------------------------------------------------------------------
-      // 2. Dynamic Content Population
-      // ----------------------------------------------------------------------
-
-      // Hotel Details
-      document.getElementById('page-title').textContent = selectedHotel['Main Hotel'];
-      document.getElementById('hotel-name').textContent = selectedHotel['Main Hotel'];
-      document.getElementById('hotel-name-breadcrumb').textContent = selectedHotel['Main Hotel'];
-      document.getElementById('hotel-address').textContent = selectedHotel['Address Line (Street, Landmark, Village, )'];
-
-      // Images
-      const mainImage = document.getElementById('main-product-image');
-      const thumbnailSwiperWrapper = document.getElementById('thumbnail-swiper-wrapper');
-
-      if (selectedHotel.images && selectedHotel.images.length > 0) {
-        mainImage.src = selectedHotel.images[0];
-        mainImage.setAttribute('data-zoom', selectedHotel.images[0]);
-
-        thumbnailSwiperWrapper.innerHTML = '';
-        selectedHotel.images.forEach(imageUrl => {
-          const swiperSlide = document.createElement('div');
-          swiperSlide.className = 'swiper-slide';
-          swiperSlide.innerHTML = `<img src="${imageUrl}" class="img-fluid" alt="Hotel Image" onerror="this.onerror=null; this.src='https://placehold.co/100x75/000/fff?text=No+Image';">`;
-          thumbnailSwiperWrapper.appendChild(swiperSlide);
-        });
-
-        // Re-initialize Swiper
-        const swiper = new Swiper('.thumbnail-gallery', {
-          loop: false,
-          slidesPerView: 4,
-          spaceBetween: 10,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          navigation: {
-            nextEl: '.next-image',
-            prevEl: '.prev-image',
-          },
-        });
-
-        // Add event listener to update main image on thumbnail click
-        swiper.on('click', (swiper, event) => {
-            const clickedSlide = event.target.closest('.swiper-slide');
-            if (clickedSlide) {
-                const clickedImg = clickedSlide.querySelector('img');
-                if (clickedImg) {
-                    mainImage.src = clickedImg.src;
-                    mainImage.setAttribute('data-zoom', clickedImg.src);
-                }
+        fetch('hotels.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
             }
-        });
+            return response.json();
+          })
+          .then(hotelsData => {
+            const hotel = hotelsData.find(h => h.hotel_id === hotelId);
+            if (hotel) {
+              // Update Page Title and Sidebar with Hotel Name and Address
+              document.getElementById('hotel-name-page-title').textContent = hotel['Main Hotel'];
+              document.getElementById('hotel-name-sidebar').textContent = hotel['Main Hotel'];
+              document.getElementById('hotel-address').textContent = hotel['Address Line (Street, Landmark, Village, )'];
+
+              // Update Contact Info
+              document.getElementById('hotel-phone').textContent = hotel['Phone'];
+              document.getElementById('hotel-email').textContent = hotel['Email'];
+              document.getElementById('hotel-address-full').textContent = hotel['Address Line (Street, Landmark, Village, )'];
+
+              // Update Quick Stats in Overview
+              const firstRoom = hotel.rooms[0];
+              document.getElementById('checkin-time').textContent = firstRoom['Check-in Time'];
+              document.getElementById('checkout-time').textContent = firstRoom['Check-out Time'];
+              document.getElementById('quick-stats-phone').textContent = hotel['Phone'];
+              document.getElementById('quick-stats-email').textContent = hotel['Email'];
+
+
+              // Update Image Gallery
+              const mainImage = document.getElementById('main-product-image');
+              const thumbnailGallery = document.querySelector('.thumbnail-gallery.thumbnail-list');
+              thumbnailGallery.innerHTML = ''; // Clear existing thumbnails
+
+              hotel.images.forEach((image, index) => {
+                // Set main image and zoom link
+                if (index === 0) {
+                  mainImage.src = image;
+                  mainImage.setAttribute('data-zoom', image);
+                }
+
+                // Create thumbnail
+                const thumbnailItem = document.createElement('div');
+                thumbnailItem.classList.add('thumbnail-item');
+                if (index === 0) {
+                  thumbnailItem.classList.add('active');
+                }
+                thumbnailItem.setAttribute('data-image', image);
+                thumbnailItem.innerHTML = `<img src="${image}" alt="${hotel['Main Hotel']} Photo" class="img-fluid">`;
+                thumbnailGallery.appendChild(thumbnailItem);
+              });
+
+              // Update Hotel Description
+              document.getElementById('hotel-description').textContent = hotel.rooms[0]['Long Description'] || hotel.rooms[0]['Short Description'];
+
+              // Update Amenities
+              const amenitiesList = document.getElementById('hotel-amenities-list');
+              amenitiesList.innerHTML = '';
+              const amenities = hotel['Amenities (same for all hotels)'].split('\n').filter(item => item.trim() !== '');
+              amenities.forEach(amenity => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<i class="bi bi-check-circle-fill"></i> ${amenity.trim()}`;
+                amenitiesList.appendChild(listItem);
+              });
+
+              // Update Refund Policies
+              document.getElementById('refund-policies').textContent = hotel['Refund Policies'];
+
+              // Update Available Rooms section
+              const roomsList = document.getElementById('rooms-list');
+              roomsList.innerHTML = ''; // Clear existing rooms
+              hotel.rooms.forEach((room, index) => {
+                  const roomItem = document.createElement('li');
+                  roomItem.classList.add('stat-item');
+                  if (index === 0) {
+                      roomItem.classList.add('active');
+                  }
+                  roomItem.innerHTML = `
+                      <a href="#" class="btn ${index === 0 ? 'btn-primary' : 'btn-outline-primary'} d-flex w-100 p-2 rounded justify-content-between align-items-center">
+                          <span class="stat-label">${room['Hotel rooms options']}</span>
+                          <span class="stat-value">Available</span>
+                      </a>
+                  `;
+                  roomsList.appendChild(roomItem);
+              });
+
+            } else {
+              console.error('Hotel not found with ID:', hotelId);
+              // Handle case where hotel ID is not found, e.g., show an error message
+            }
+          })
+          .catch(error => console.error('Error fetching hotels.json:', error));
       }
-
-      // Rooms Tabs & Booking Form
-      const pillsTab = document.getElementById('pills-tab');
-      const pillsTabContent = document.getElementById('pills-tabContent');
-      const roomOptionSelect = document.getElementById('room-option');
-      let currentRoomData = null;
-
-      // Clear previous content
-      pillsTab.innerHTML = '';
-      pillsTabContent.innerHTML = '';
-      roomOptionSelect.innerHTML = '<option value="" selected disabled>Select a Room Option</option>';
-
-      selectedHotel.rooms.forEach((room, index) => {
-        const roomNameSanitized = sanitizeName(room['Hotel rooms options']);
-        const isActive = index === 0;
-
-        // Create tab
-        const li = document.createElement('li');
-        li.className = 'nav-item';
-        li.setAttribute('role', 'presentation');
-        li.innerHTML = `<button class="nav-link ${isActive ? 'active' : ''}" id="pills-${roomNameSanitized}-tab" data-bs-toggle="pill" data-bs-target="#pills-${roomNameSanitized}" type="button" role="tab" aria-controls="pills-${roomNameSanitized}" aria-selected="${isActive}">${room['Hotel rooms options']}</button>`;
-        pillsTab.appendChild(li);
-
-        // Create tab content
-        const div = document.createElement('div');
-        div.className = `tab-pane fade ${isActive ? 'show active' : ''}`;
-        div.id = `pills-${roomNameSanitized}`;
-        div.setAttribute('role', 'tabpanel');
-        div.setAttribute('aria-labelledby', `pills-${roomNameSanitized}-tab`);
-        div.innerHTML = `
-          <h3 class="h4">${room['Hotel rooms options']}</h3>
-          <p>${room['Short Description']}</p>
-          <p>${room['Long Description']}</p>
-          <ul class="list-unstyled">
-              <li><strong>Group Price (per night):</strong> ₹${room['Group Price (per night)']}</li>
-              <li><strong>Max people at group price:</strong> ${room['Max people paying group price']}</li>
-              <li><strong>Extra charges per person:</strong> ₹${room['Extra charges for extra people']}</li>
-              <li><strong>Max Occupancy:</strong> ${room['Max Occupancy ']}</li>
-              <li><strong>Max Adults:</strong> ${room['Max Adults']}</li>
-              <li><strong>Max Children:</strong> ${room['Max Children']}</li>
-          </ul>
-        `;
-        pillsTabContent.appendChild(div);
-
-        // Populate booking form dropdown
-        const option = document.createElement('option');
-        option.value = roomNameSanitized;
-        option.textContent = room['Hotel rooms options'];
-        roomOptionSelect.appendChild(option);
-      });
-
-      // ----------------------------------------------------------------------
-      // 3. Booking Form Logic
-      // ----------------------------------------------------------------------
-      const roomOptionInput = document.getElementById('room-option');
-      const checkInDateInput = document.getElementById('check-in-date');
-      const checkOutDateInput = document.getElementById('check-out-date');
-      const adultsCountInput = document.getElementById('adults-count');
-      const childrenCountInput = document.getElementById('children-count');
-      const priceDisplay = document.getElementById('price-display');
-      const totalPriceSpan = document.getElementById('total-price');
-
-      // Initialize Flatpickr datepickers
-      flatpickr(checkInDateInput, { dateFormat: "Y-m-d", minDate: "today" });
-      flatpickr(checkOutDateInput, { dateFormat: "Y-m-d", minDate: "today" });
-
-      function calculatePrice() {
-        const roomNameSanitized = roomOptionInput.value;
-        const checkIn = checkInDateInput.value;
-        const checkOut = checkOutDateInput.value;
-        const adults = parseInt(adultsCountInput.value) || 0;
-        const children = parseInt(childrenCountInput.value) || 0;
-
-        if (!roomNameSanitized || !checkIn || !checkOut || adults < 1) {
-          priceDisplay.style.display = 'none';
-          return;
-        }
-
-        const room = selectedHotel.rooms.find(r => sanitizeName(r['Hotel rooms options']) === roomNameSanitized);
-        if (!room) {
-          priceDisplay.style.display = 'none';
-          return;
-        }
-
-        const checkInDate = new Date(checkIn);
-        const checkOutDate = new Date(checkOut);
-        const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
-        const numberOfNights = timeDiff / (1000 * 3600 * 24);
-
-        if (numberOfNights <= 0 || isNaN(numberOfNights)) {
-          priceDisplay.style.display = 'none';
-          return;
-        }
-
-        let extraPeople = 0;
-        const totalGuests = adults + children;
-        if (totalGuests > room['Max people paying group price']) {
-          extraPeople = totalGuests - room['Max people paying group price'];
-        }
-
-        const groupPrice = room['Group Price (per night)'];
-        const extraCharges = room['Extra charges for extra people'];
-
-        const totalPrice = (groupPrice + (extraPeople * extraCharges)) * numberOfNights;
-        totalPriceSpan.textContent = `₹${totalPrice.toLocaleString()}`;
-        priceDisplay.style.display = 'block';
-      }
-
-      const formInputs = [roomOptionInput, checkInDateInput, checkOutDateInput, adultsCountInput, childrenCountInput];
-      formInputs.forEach(input => input.addEventListener('change', calculatePrice));
-
-      calculatePrice();
-
-      document.getElementById('booking-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const sentMessage = this.querySelector('.sent-message');
-        sentMessage.style.display = 'block';
-        setTimeout(() => {
-          sentMessage.style.display = 'none';
-        }, 5000);
-      });
     });
   </script>
-
 </body>
+
 </html>
