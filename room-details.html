@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Room Details - LuxuryHotel Bootstrap Template</title>
+  <title id="page-title">Room Details - LuxuryHotel Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -232,6 +232,7 @@
             const hotel = hotelsData.find(h => h.hotel_id === hotelId);
             if (hotel) {
               // Update Page Title and Sidebar with Hotel Name and Address
+              document.getElementById('page-title').textContent = `${hotel['Main Hotel']} Details`;
               document.getElementById('hotel-name-page-title').textContent = hotel['Main Hotel'];
               document.getElementById('hotel-name-sidebar').textContent = hotel['Main Hotel'];
               document.getElementById('hotel-address').textContent = hotel['Address Line (Street, Landmark, Village, )'];
@@ -241,10 +242,12 @@
               document.getElementById('hotel-email').textContent = hotel['Email'];
               document.getElementById('hotel-address-full').textContent = hotel['Address Line (Street, Landmark, Village, )'];
 
-              // Update Quick Stats in Overview
+              // Update Quick Stats in Overview. Using the first room's check-in/out times as a default
               const firstRoom = hotel.rooms[0];
-              document.getElementById('checkin-time').textContent = firstRoom['Check-in Time'];
-              document.getElementById('checkout-time').textContent = firstRoom['Check-out Time'];
+              if (firstRoom) {
+                  document.getElementById('checkin-time').textContent = firstRoom['Check-in Time'];
+                  document.getElementById('checkout-time').textContent = firstRoom['Check-out Time'];
+              }
               document.getElementById('quick-stats-phone').textContent = hotel['Phone'];
               document.getElementById('quick-stats-email').textContent = hotel['Email'];
 
@@ -278,7 +281,7 @@
               // Update Amenities
               const amenitiesList = document.getElementById('hotel-amenities-list');
               amenitiesList.innerHTML = '';
-              const amenities = hotel['Amenities (same for all hotels)'].split('\n').filter(item => item.trim() !== '');
+              const amenities = hotel['Amenities (same for all hotels)'].split('\n').filter(item => item.trim() !== '' && !item.includes('🛏️') && !item.includes('🏕️'));
               amenities.forEach(amenity => {
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `<i class="bi bi-check-circle-fill"></i> ${amenity.trim()}`;
@@ -305,13 +308,21 @@
                   `;
                   roomsList.appendChild(roomItem);
               });
-
             } else {
               console.error('Hotel not found with ID:', hotelId);
-              // Handle case where hotel ID is not found, e.g., show an error message
+              document.getElementById('page-title').textContent = 'Hotel Not Found';
+              document.getElementById('hotel-name-page-title').textContent = 'Hotel Not Found';
+              document.getElementById('hotel-name-sidebar').textContent = 'Hotel Not Found';
+              document.getElementById('hotel-address').textContent = 'Please check the URL.';
             }
           })
-          .catch(error => console.error('Error fetching hotels.json:', error));
+          .catch(error => {
+            console.error('Error fetching hotels.json:', error);
+            document.getElementById('page-title').textContent = 'Error Loading Data';
+            document.getElementById('hotel-name-page-title').textContent = 'Error Loading Data';
+            document.getElementById('hotel-name-sidebar').textContent = 'Error Loading Data';
+            document.getElementById('hotel-address').textContent = 'Could not load hotel data. Please check the file path.';
+          });
       }
     });
   </script>
