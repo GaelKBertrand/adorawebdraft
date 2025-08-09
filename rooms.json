@@ -3,7 +3,7 @@
     "id": "swiss-cottage-main",
     "name": "Swiss Cottage",
     "category": "Swiss Cottage",
-    "price": 12000,
+    "price": "starting from 12000",
     "maxOccupancy": 16,
     "maxAdults": 12,
     "maxChildren": 4,
