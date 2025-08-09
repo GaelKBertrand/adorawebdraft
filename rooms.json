@@ -11,7 +11,7 @@
     "description": "Experience luxury and comfort in our spacious 5-bedroom Swiss Cottage, perfect for large families or groups looking for a retreat in the heart of nature.",
     "image": "assets/img/hotel/swisscover.jpg",
     "badge": "Luxury Experience",
-    "view": "mountain",
+    "view": ["mountain", "garden", "valley"]
     "features": ["wifi", "balcony", "kitchen", "spa"]
   },
   {
